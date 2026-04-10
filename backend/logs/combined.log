@@ -1,0 +1,136 @@
+2026-04-11 02:46:21 [info]: [Worker] PDF queue worker registered
+2026-04-11 02:46:21 [info]: MongoDB connected: mongodb://localhost:27017/ilovepdf
+2026-04-11 02:46:21 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-11 02:46:21 [info]: 
+╔══════════════════════════════════════════════╗
+║      iLovePDF Backend API — Running          ║
+║  URL  : http://localhost:5000               ║
+║  Mode : development                        ║
+╚══════════════════════════════════════════════╝
+    
+2026-04-11 02:51:23 [info]: MongoDB connected: mongodb://localhost:27017/ilovepdf
+2026-04-11 02:51:23 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-11 02:51:23 [info]: 
+╔══════════════════════════════════════════════════╗
+║       iLovePDF Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-11 02:58:35 [info]: Dispatched job 4b595f49-ecf0-4a7a-b8d4-ac2eef0b783d for tool: compress
+2026-04-11 02:58:35 [info]: [JobRunner] Processing job 4b595f49-ecf0-4a7a-b8d4-ac2eef0b783d — tool: compress
+2026-04-11 02:58:35 [info]: [JobRunner] Job 4b595f49-ecf0-4a7a-b8d4-ac2eef0b783d completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_007d6ffd-b8f9-4599-b14c-6fa4c6d0fe14.pdf
+2026-04-11 02:58:45 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\3ee4f652-6590-449f-8202-e235d04d9f7a.pdf
+2026-04-11 02:59:30 [info]: Dispatched job 5f3e9d4b-1efe-43cc-8c20-899951683248 for tool: merge
+2026-04-11 02:59:30 [info]: [JobRunner] Processing job 5f3e9d4b-1efe-43cc-8c20-899951683248 — tool: merge
+2026-04-11 02:59:30 [info]: [JobRunner] Job 5f3e9d4b-1efe-43cc-8c20-899951683248 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\merged_cf3da681-b54b-40c9-980d-6087e177ab86.pdf
+2026-04-11 02:59:33 [info]: Dispatched job 09d08b87-651a-4196-8cb5-b1df08058371 for tool: watermark
+2026-04-11 02:59:33 [info]: [JobRunner] Processing job 09d08b87-651a-4196-8cb5-b1df08058371 — tool: watermark
+2026-04-11 02:59:33 [info]: [JobRunner] Job 09d08b87-651a-4196-8cb5-b1df08058371 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\watermarked_9ad83b91-9bdb-4800-8b68-8deaf7d81db2.pdf
+2026-04-11 02:59:40 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\3d554e80-08fa-4e59-a2f2-3b0cfd7cc9ed.pdf
+2026-04-11 02:59:40 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\c255be2d-22d3-45fc-8ed6-ecc308eb29cd.pdf
+2026-04-11 02:59:43 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\15135e08-749f-45af-b9cf-3fbb1cdce095.pdf
+2026-04-11 03:00:00 [info]: Running scheduled file cleanup...
+2026-04-11 03:00:00 [info]: Scheduled cleanup complete.
+2026-04-11 03:04:10 [info]: Dispatched job 0eedd336-a18c-4499-a61e-dd6293436c1c for tool: compress
+2026-04-11 03:04:10 [info]: [JobRunner] Processing job 0eedd336-a18c-4499-a61e-dd6293436c1c — tool: compress
+2026-04-11 03:04:10 [info]: [JobRunner] Job 0eedd336-a18c-4499-a61e-dd6293436c1c completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_0cf5884e-8978-43ce-98bb-453747acdf90.pdf
+2026-04-11 03:04:20 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\18a66060-ec23-4f98-a919-c1c4ad1141fc.pdf
+2026-04-11 03:04:44 [info]: Dispatched job 227776e7-5e2c-44eb-b233-8cfc1ca9e82b for tool: merge
+2026-04-11 03:04:44 [info]: [JobRunner] Processing job 227776e7-5e2c-44eb-b233-8cfc1ca9e82b — tool: merge
+2026-04-11 03:04:44 [info]: [JobRunner] Job 227776e7-5e2c-44eb-b233-8cfc1ca9e82b completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\merged_12e8d8c0-6cd4-4d69-b4ec-cff21ffa442b.pdf
+2026-04-11 03:04:54 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\70746915-0080-4244-8425-d1d36350212c.pdf
+2026-04-11 03:04:54 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\e9bde59f-83bc-4221-85ab-c248638ddce5.pdf
+2026-04-11 03:07:05 [info]: Dispatched job 093f0450-5c0e-4ee0-947f-035cd7c779ee for tool: pdf-to-jpg
+2026-04-11 03:07:05 [info]: [JobRunner] Processing job 093f0450-5c0e-4ee0-947f-035cd7c779ee — tool: pdf-to-jpg
+2026-04-11 03:07:06 [info]: [JobRunner] Job 093f0450-5c0e-4ee0-947f-035cd7c779ee completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\pdf_pages_62950e4f-db63-485d-95ec-6822261df2b7.zip
+2026-04-11 03:07:16 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\b62a5b28-18d6-41d2-b1e9-472a29ef7b3e.pdf
+2026-04-11 03:08:17 [info]: MongoDB connected: mongodb://localhost:27017/ilovepdf
+2026-04-11 03:08:17 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-11 03:08:17 [info]: 
+╔══════════════════════════════════════════════════╗
+║       iLovePDF Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-11 03:08:33 [info]: MongoDB connected: mongodb://localhost:27017/ilovepdf
+2026-04-11 03:08:33 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-11 03:08:33 [info]: 
+╔══════════════════════════════════════════════════╗
+║       iLovePDF Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-11 03:11:09 [info]: Dispatched job b1bcac45-318e-473b-b0e7-77c88b4ba009 for tool: compress
+2026-04-11 03:11:09 [info]: [JobRunner] Processing job b1bcac45-318e-473b-b0e7-77c88b4ba009 — tool: compress
+2026-04-11 03:11:09 [info]: [JobRunner] Job b1bcac45-318e-473b-b0e7-77c88b4ba009 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_1dd6d080-9fff-47a2-8398-fd614c651ee2.pdf
+2026-04-11 03:11:19 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\556c2a36-f008-452b-87fb-66d333738065.pdf
+2026-04-11 03:16:41 [info]: Dispatched job 17e95905-e104-4bdc-a564-19f13956c9b9 for tool: compress
+2026-04-11 03:16:41 [info]: [JobRunner] Processing job 17e95905-e104-4bdc-a564-19f13956c9b9 — tool: compress
+2026-04-11 03:16:41 [info]: [JobRunner] Job 17e95905-e104-4bdc-a564-19f13956c9b9 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_ec05ddd6-1f2d-4708-8113-cd75d3602468.pdf
+2026-04-11 03:16:51 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\32ea51c6-a0ee-414f-be5b-2038dd969448.pdf
+2026-04-11 03:22:43 [info]: Dispatched job 7587fc6f-1eb8-4900-969d-8349b8a24cc2 for tool: compress
+2026-04-11 03:22:43 [info]: [JobRunner] Processing job 7587fc6f-1eb8-4900-969d-8349b8a24cc2 — tool: compress
+2026-04-11 03:22:43 [info]: [JobRunner] Job 7587fc6f-1eb8-4900-969d-8349b8a24cc2 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_0ee8e48c-d71a-4cf5-96b7-606ebf58eb15.pdf
+2026-04-11 03:22:53 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\7b1c71ff-1663-432d-9734-b2f5b85c9947.pdf
+2026-04-11 03:28:11 [info]: Dispatched job 4c5f6fa0-ce7d-483a-8cb8-e18057193662 for tool: compress
+2026-04-11 03:28:11 [info]: [JobRunner] Processing job 4c5f6fa0-ce7d-483a-8cb8-e18057193662 — tool: compress
+2026-04-11 03:28:11 [info]: [JobRunner] Job 4c5f6fa0-ce7d-483a-8cb8-e18057193662 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_f9d804a9-d18c-429b-bc53-7fc2f565466e.pdf
+2026-04-11 03:28:21 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\ab4c09dd-96e7-4a81-b4ba-a38b18ddf543.pdf
+2026-04-11 03:30:46 [info]: MongoDB connected: mongodb://localhost:27017/ilovepdf
+2026-04-11 03:30:46 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-11 03:32:00 [info]: Dispatched job 015a3af6-25c3-4f6e-bb28-901b3cba9865 for tool: page-numbers
+2026-04-11 03:32:00 [info]: [JobRunner] Processing job 015a3af6-25c3-4f6e-bb28-901b3cba9865 — tool: page-numbers
+2026-04-11 03:32:01 [info]: [JobRunner] Job 015a3af6-25c3-4f6e-bb28-901b3cba9865 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\numbered_cb9e9424-7db7-46fc-a0c6-0af4499c061b.pdf
+2026-04-11 03:32:11 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\531e54b2-24c5-4b8d-8a9b-2d55fa7ddf42.pdf
+2026-04-11 03:32:47 [info]: Dispatched job 843e943e-45be-4b54-81c4-9f95ea042a38 for tool: word-to-pdf
+2026-04-11 03:32:47 [info]: [JobRunner] Processing job 843e943e-45be-4b54-81c4-9f95ea042a38 — tool: word-to-pdf
+2026-04-11 03:32:48 [info]: [JobRunner] Job 843e943e-45be-4b54-81c4-9f95ea042a38 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\converted_e040b0d4-bfeb-455d-afed-a4c2d2bf052d.pdf
+2026-04-11 03:32:58 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\02fcd09c-c86b-4ccc-ab42-d2d8eaf3649e.docx
+2026-04-11 03:34:10 [info]: Dispatched job dbc47161-a26f-4717-9b45-8149747e703c for tool: pdf-to-jpg
+2026-04-11 03:34:10 [info]: [JobRunner] Processing job dbc47161-a26f-4717-9b45-8149747e703c — tool: pdf-to-jpg
+2026-04-11 03:34:10 [info]: [JobRunner] Job dbc47161-a26f-4717-9b45-8149747e703c completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\pdf_pages_6293fd1e-83d3-4a62-9773-3077dfc7f486.zip
+2026-04-11 03:34:20 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\c992c865-6b13-4bc4-b4e0-677e38397f3f.pdf
+2026-04-11 03:35:00 [info]: Dispatched job 239aa149-e878-4188-875b-4d475c4f3fba for tool: jpg-to-pdf
+2026-04-11 03:35:00 [info]: [JobRunner] Processing job 239aa149-e878-4188-875b-4d475c4f3fba — tool: jpg-to-pdf
+2026-04-11 03:35:00 [info]: [JobRunner] Job 239aa149-e878-4188-875b-4d475c4f3fba completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\images_to_pdf_fbafa2f3-e1dc-4048-9b96-f53a3d016b66.pdf
+2026-04-11 03:35:10 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\50f7523a-71d5-4785-a3c0-fdb70c038ad5.jpeg
+2026-04-11 03:35:10 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\e796f1ca-9f60-455e-9be6-ae041dac092f.jpeg
+2026-04-11 03:35:10 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\0e295e11-43f5-44c1-88c1-1a0c59162a63.jpeg
+2026-04-11 03:35:10 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\8d0d0073-af09-4f56-bc76-c41ec43252ff.jpeg
+2026-04-11 03:35:43 [info]: Dispatched job cb104e0f-be0b-47dc-8c5c-ff67e618eabf for tool: pdf-to-word
+2026-04-11 03:35:43 [info]: [JobRunner] Processing job cb104e0f-be0b-47dc-8c5c-ff67e618eabf — tool: pdf-to-word
+2026-04-11 03:35:43 [info]: [JobRunner] Job cb104e0f-be0b-47dc-8c5c-ff67e618eabf completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\converted_76a43c79-fb76-40f4-8d50-5fd8772724fb.docx
+2026-04-11 03:35:53 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\de1c2524-0281-4532-8440-fd48143e3b37.pdf
+2026-04-11 03:36:31 [info]: Dispatched job 51863e42-e0d3-427c-a1f9-7a19ae158c37 for tool: merge
+2026-04-11 03:36:31 [info]: [JobRunner] Processing job 51863e42-e0d3-427c-a1f9-7a19ae158c37 — tool: merge
+2026-04-11 03:36:31 [info]: [JobRunner] Job 51863e42-e0d3-427c-a1f9-7a19ae158c37 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\merged_d5911b5f-4346-4506-a967-5a3f7b9186de.pdf
+2026-04-11 03:36:41 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\f0fe0b5f-256d-461b-a9f0-61cec54bd508.pdf
+2026-04-11 03:36:41 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\d4616242-32a8-4819-a0c6-8f0821ca31e2.pdf
+2026-04-11 03:36:41 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\316a7ddc-64be-46e5-83b8-b770f906c47c.pdf
+2026-04-11 03:37:07 [info]: Dispatched job c61a82d1-2e21-4d36-b10d-bd39d9c518da for tool: compress
+2026-04-11 03:37:07 [info]: [JobRunner] Processing job c61a82d1-2e21-4d36-b10d-bd39d9c518da — tool: compress
+2026-04-11 03:37:07 [info]: [JobRunner] Job c61a82d1-2e21-4d36-b10d-bd39d9c518da completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_5b037ea0-8b42-4f6f-b797-2f427893f558.pdf
+2026-04-11 03:37:17 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\50b132fd-2839-475d-83e4-fc82796cf773.pdf
+2026-04-11 03:45:51 [info]: MongoDB connected: mongodb://localhost:27017/ilovepdf
+2026-04-11 03:45:51 [info]: MongoDB connected: mongodb://localhost:27017/ilovepdf
+2026-04-11 03:45:51 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-11 03:45:51 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-11 03:45:51 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-11 04:00:00 [info]: Running scheduled file cleanup...
+2026-04-11 04:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_007d6ffd-b8f9-4599-b14c-6fa4c6d0fe14.pdf
+2026-04-11 04:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\merged_cf3da681-b54b-40c9-980d-6087e177ab86.pdf
+2026-04-11 04:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\watermarked_9ad83b91-9bdb-4800-8b68-8deaf7d81db2.pdf
+2026-04-11 04:00:00 [info]: Scheduled cleanup complete.
