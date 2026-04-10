@@ -31,7 +31,7 @@ function dispatch(
 // ─── Merge ─────────────────────────────────────────────────────────────────
 
 export async function mergeController(req: Request, res: Response, next: NextFunction) {
-  const files = req.files as Express.Multer.File[];
+  const files = req.files as any[];
   if (!files || files.length < 2) {
     return next(createError('Upload at least 2 PDF files.', 400));
   }
@@ -124,7 +124,7 @@ export async function pageNumbersController(req: Request, res: Response, next: N
 // ─── JPG to PDF ──────────────────────────────────────────────────────────
 
 export async function jpgToPdfController(req: Request, res: Response, next: NextFunction) {
-  const files = req.files as Express.Multer.File[];
+  const files = req.files as any[];
   if (!files || files.length === 0) {
     return next(createError('Upload at least one image file.', 400));
   }

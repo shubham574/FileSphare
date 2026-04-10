@@ -26,7 +26,7 @@ export function errorHandler(
   // Handle Multer errors
   if (err instanceof multer.MulterError) {
     statusCode = 400;
-    if (err.code === 'LIMIT_FILE_SIZE') {
+    if ((err as any).code === 'LIMIT_FILE_SIZE') {
       message = `File too large. Maximum size is ${process.env.MAX_FILE_SIZE_MB || 100}MB.`;
     } else {
       message = `Upload error: ${err.message}`;

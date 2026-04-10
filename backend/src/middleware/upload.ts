@@ -24,7 +24,7 @@ const storage = multer.diskStorage({
 
 const fileFilter = (
   _req: any,
-  file: Express.Multer.File,
+  file: any,
   cb: multer.FileFilterCallback
 ) => {
   const allowed = ['.pdf', '.docx', '.jpg', '.jpeg', '.png', '.webp'];

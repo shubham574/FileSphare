@@ -134,3 +134,27 @@
 2026-04-11 04:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\merged_cf3da681-b54b-40c9-980d-6087e177ab86.pdf
 2026-04-11 04:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\watermarked_9ad83b91-9bdb-4800-8b68-8deaf7d81db2.pdf
 2026-04-11 04:00:00 [info]: Scheduled cleanup complete.
+2026-04-11 04:37:13 [warn]: MongoDB unavailable — running without database persistence.
+2026-04-11 04:37:13 [warn]: MongoDB unavailable — running without database persistence.
+2026-04-11 04:37:13 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-11 04:37:13 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-11 04:37:13 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-11 04:37:47 [warn]: MongoDB unavailable — running without database persistence.
+2026-04-11 04:37:47 [warn]: MongoDB unavailable — running without database persistence.
+2026-04-11 04:37:48 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-11 04:37:48 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-11 04:37:48 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
