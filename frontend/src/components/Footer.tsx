@@ -1,62 +1,34 @@
-import Link from 'next/link';
-
 export default function Footer() {
-  const year = new Date().getFullYear();
-
   return (
-    <footer className="border-t border-white/10 mt-24 py-12 px-4">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
-          {/* Brand */}
-          <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center text-white font-black text-lg">
-                ♾
-              </div>
-              <span className="text-white font-bold text-xl">
-                File<span className="text-violet-400">Sphere</span>
-              </span>
-            </div>
-            <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
-              A powerful suite of PDF tools to help you work smarter. Free, fast, and secure.
-            </p>
-          </div>
-
-          {/* Tools */}
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-widest">Tools</h4>
-            <ul className="space-y-2 text-sm text-slate-400">
-              {['Merge PDF', 'Split PDF', 'Compress PDF', 'PDF to Word', 'Word to PDF'].map((t) => (
-                <li key={t}>
-                  <Link href="/" className="hover:text-violet-400 transition-colors">{t}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* More Tools */}
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-widest">More</h4>
-            <ul className="space-y-2 text-sm text-slate-400">
-              {['JPG to PDF', 'PDF to JPG', 'Rotate PDF', 'Add Watermark', 'Page Numbers'].map((t) => (
-                <li key={t}>
-                  <Link href="/" className="hover:text-violet-400 transition-colors">{t}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+    <footer className="w-full py-12 border-t border-slate-200/50 dark:border-slate-800/50 bg-slate-50 dark:bg-slate-900/50 mt-auto">
+      <div className="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-8">
+        <div className="flex flex-col items-center md:items-start gap-2">
+          <div className="text-lg font-bold text-slate-900 dark:text-white">FileSphere</div>
+          <p className="font-inter text-xs leading-relaxed text-slate-500 dark:text-slate-400">© 2024 FileSphere Inc. All rights reserved.</p>
         </div>
-
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-white/10">
-          <p className="text-slate-500 text-sm">
-            © {year} FileSphere Clone. Built with Next.js & Node.js.
-          </p>
-          <div className="flex items-center gap-4 text-sm text-slate-500">
-            <span className="flex items-center gap-1">
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              All systems operational
-            </span>
-          </div>
+        
+        <div className="flex flex-wrap justify-center gap-8">
+          <a href="#" className="font-inter text-xs leading-relaxed text-slate-500 dark:text-slate-400 opacity-80 hover:opacity-100 transition-opacity hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline">
+            Privacy Policy
+          </a>
+          <a href="#" className="font-inter text-xs leading-relaxed text-slate-500 dark:text-slate-400 opacity-80 hover:opacity-100 transition-opacity hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline">
+            Terms of Service
+          </a>
+          <a href="#" className="font-inter text-xs leading-relaxed text-slate-500 dark:text-slate-400 opacity-80 hover:opacity-100 transition-opacity hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline">
+            Security
+          </a>
+          <a href="#" className="font-inter text-xs leading-relaxed text-slate-500 dark:text-slate-400 opacity-80 hover:opacity-100 transition-opacity hover:text-slate-900 dark:hover:text-white underline-offset-4 hover:underline">
+            Help Center
+          </a>
+        </div>
+        
+        <div className="flex gap-4">
+          <button title="Language" className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-slate-600 hover:text-primary transition-colors cursor-pointer">
+            <span className="material-symbols-outlined text-lg">public</span>
+          </button>
+          <button title="Contact" className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-slate-600 hover:text-primary transition-colors cursor-pointer">
+            <span className="material-symbols-outlined text-lg">mail</span>
+          </button>
         </div>
       </div>
     </footer>

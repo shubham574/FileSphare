@@ -68,6 +68,7 @@ router.get('/status/:jobId', (req: Request, res: Response, next: NextFunction) =
     downloadUrl: job.status === 'completed'
       ? `/api/download/${job.jobId}`
       : undefined,
+    metadata: job.metadata,
     createdAt: job.createdAt,
     updatedAt: job.updatedAt,
   });

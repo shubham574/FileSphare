@@ -27,6 +27,7 @@ export interface JobState {
   outputFile?: string;
   error?: string;
   options?: Record<string, any>;
+  metadata?: Record<string, any>; // tool-specific extra data (e.g. compress stats)
   createdAt: Date;
   updatedAt: Date;
 }
@@ -42,10 +43,11 @@ export function getJob(jobId: string): JobState | undefined {
 
 // ─── Service map ──────────────────────────────────────────────────────────────
 
-const serviceMap: Record<string, (inputFiles: string[], options: any) => Promise<string>> = {
+// Compress returns a richer result object; all others return a string path
+const serviceMap: Record<string, (inputFiles: string[], options: any) => Promise<string | { outputPath: string; [key: string]: any }>> = {
   'merge':        (files, _opts)  => mergePdfs(files),
   'split':        (files, opts)   => splitPdf(files[0], opts),
-  'compress':     (files, _opts)  => compressPdf(files[0]),
+  'compress':     (files, opts)   => compressPdf(files[0], opts),
   'rotate':       (files, opts)   => rotatePdf(files[0], opts),
   'watermark':    (files, opts)   => addWatermark(files[0], opts),
   'page-numbers': (files, opts)   => addPageNumbers(files[0], opts),
@@ -78,10 +80,23 @@ async function runJob(jobId: string) {
   }
 
   try {
-    const outputFile = await serviceFn(job.inputFiles, job.options || {});
+    const result = await serviceFn(job.inputFiles, job.options || {});
+
+    // Some services (compress) return a rich object; others return a plain string path
+    let outputFile: string;
+    let metadata: Record<string, any> | undefined;
+    if (typeof result === 'string') {
+      outputFile = result;
+    } else {
+      outputFile = result.outputPath;
+      const { outputPath: _p, ...rest } = result;
+      metadata = rest;
+    }
+
     updateJob(jobId, {
       status: 'completed',
       outputFile,
+      metadata,
     });
     logger.info(`[JobRunner] Job ${jobId} completed → ${outputFile}`);
 

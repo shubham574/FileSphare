@@ -57,109 +57,73 @@ export default function DropZone({
   };
 
   return (
-    <div className="space-y-4">
-      {/* Drop zone */}
-      <div
-        {...getRootProps()}
-        className={`
-          relative border-2 border-dashed rounded-2xl p-12 text-center cursor-pointer transition-all duration-300
-          ${isDragActive || dragActive
-            ? 'border-violet-400 bg-violet-500/10 scale-[1.01]'
-            : 'border-white/20 hover:border-violet-400/60 hover:bg-white/5'
-          }
-        `}
-      >
+    <div className="space-y-8">
+      {/* Upload Area */}
+      <div className="relative group" {...getRootProps()}>
         <input {...getInputProps()} />
-
-        {/* Animated background dots */}
-        <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
-          {isDragActive && (
-            <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 to-indigo-500/5 animate-pulse" />
-          )}
-        </div>
-
-        <div className="relative space-y-4">
-          {/* Upload icon */}
-          <div className={`mx-auto w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300 ${isDragActive ? 'bg-violet-500/30 scale-110' : 'bg-white/10'}`}>
-            <svg
-              className={`w-8 h-8 transition-colors ${isDragActive ? 'text-violet-400' : 'text-slate-400'}`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-              />
-            </svg>
+        <div className={`absolute -inset-1 bg-gradient-to-r from-primary to-secondary-container rounded-[2rem] blur transition duration-1000 md:group-hover:duration-200 ${isDragActive ? 'opacity-40' : 'opacity-20 md:group-hover:opacity-30'}`}></div>
+        
+        <div className={`relative flex flex-col items-center justify-center p-12 md:p-20 bg-surface-container-lowest border-2 border-dashed rounded-[2rem] cursor-pointer transition-colors ${isDragActive ? 'border-primary' : 'border-outline-variant hover:border-primary'}`}>
+          <div className={`w-20 h-20 flex items-center justify-center rounded-full mb-6 transition-colors ${isDragActive ? 'bg-primary text-on-primary' : 'bg-primary-fixed text-primary'}`}>
+            <span className="material-symbols-outlined text-4xl">upload_file</span>
           </div>
-
-          {isDragActive ? (
-            <p className="text-violet-300 font-semibold text-lg animate-bounce-gentle">
-              Drop your {multiple ? 'files' : 'file'} here!
-            </p>
-          ) : (
-            <>
-              <div>
-                <p className="text-white font-semibold text-lg">
-                  Drop {multiple ? 'files' : 'a file'} here, or{' '}
-                  <span className="text-violet-400 hover:text-violet-300 underline underline-offset-4 decoration-dotted">
-                    browse
-                  </span>
-                </p>
-                <p className="text-slate-500 text-sm mt-1">
-                  Accepted: {acceptedFiles} · Max 100MB{multiple ? ' per file' : ''}
-                </p>
-              </div>
-            </>
-          )}
+          
+          <button type="button" className="bg-gradient-to-r from-primary to-primary-container text-on-primary px-8 py-4 rounded-xl font-bold text-lg mb-4 hover:shadow-xl transition-all active:scale-95 pointer-events-none">
+            {isDragActive ? 'Drop files now' : 'Select Files'}
+          </button>
+          
+          <p className="text-on-surface-variant text-sm font-medium">or drag and drop files here</p>
+          
+          <div className="mt-8 flex gap-4 text-xs font-label uppercase tracking-widest text-outline flex-wrap justify-center">
+            <span>Max 50MB</span>
+            <span className="w-1 h-1 bg-outline-variant rounded-full self-center"></span>
+            <span>Secure SSL</span>
+            <span className="w-1 h-1 bg-outline-variant rounded-full self-center"></span>
+            <span>Auto-delete in 1h</span>
+          </div>
         </div>
       </div>
 
-      {/* Selected files list */}
+      {/* Selected Files List (Queue) */}
       {selectedFiles.length > 0 && (
-        <div className="space-y-2 animate-fade-in">
-          <p className="text-slate-400 text-sm font-medium">
-            {selectedFiles.length} file{selectedFiles.length !== 1 ? 's' : ''} selected
-          </p>
-          {selectedFiles.map((file, index) => (
-            <div
-              key={`${file.name}-${index}`}
-              className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 transition-colors"
-            >
-              {/* File icon */}
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-500/20 to-indigo-500/20 border border-violet-500/30 flex items-center justify-center flex-shrink-0">
-                <span className="text-lg">
-                  {file.name.endsWith('.pdf')
-                    ? '📄'
-                    : file.name.endsWith('.docx')
-                    ? '📝'
-                    : '🖼️'}
-                </span>
-              </div>
-
-              <div className="flex-1 min-w-0">
-                <p className="text-white text-sm font-medium truncate">{file.name}</p>
-                <p className="text-slate-500 text-xs">{formatSize(file.size)}</p>
-              </div>
-
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  removeFile(index);
-                }}
-                className="text-slate-500 hover:text-red-400 transition-colors p-1 hover:bg-red-500/10 rounded-lg"
-                aria-label={`Remove ${file.name}`}
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+        <section>
+          <div className="flex items-end justify-between mb-6">
+            <div>
+              <h2 className="text-2xl font-bold text-on-surface">Queue ({selectedFiles.length} file{selectedFiles.length !== 1 && 's'})</h2>
+              <p className="text-on-surface-variant text-sm">Review your selected files.</p>
             </div>
-          ))}
-        </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {selectedFiles.map((file, index) => (
+              <div key={`${file.name}-${index}`} className="bg-surface-container-high p-4 rounded-xl flex flex-col gap-3 group relative hover:shadow-md transition-shadow animate-fade-in">
+                <div className="aspect-[3/4] bg-surface-container-lowest rounded-lg border border-outline-variant/20 overflow-hidden flex items-center justify-center relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5"></div>
+                  <span className="material-symbols-outlined text-6xl text-primary/40 relative z-10">
+                    {file.name.endsWith('.pdf') ? 'picture_as_pdf' : 'image'}
+                  </span>
+                  
+                  <div className="absolute top-2 right-2 flex gap-1 z-20">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        removeFile(index);
+                      }}
+                      className="w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-error shadow-sm hover:bg-error hover:text-white transition-colors"
+                      aria-label={`Remove ${file.name}`}
+                    >
+                      <span className="material-symbols-outlined text-sm">delete</span>
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <p className="font-semibold text-on-surface truncate" title={file.name}>{file.name}</p>
+                  <p className="text-xs text-on-surface-variant">{formatSize(file.size)}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
       )}
     </div>
   );

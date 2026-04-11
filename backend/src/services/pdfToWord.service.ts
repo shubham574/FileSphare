@@ -1,75 +1,104 @@
-import pdfParse from 'pdf-parse';
-import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType } from 'docx';
+import { spawn } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 import { config } from '../config';
 
+/**
+ * Converts a PDF file to DOCX format using pdf2docx (Python library).
+ *
+ * This approach preserves:
+ *  - Images (embedded in the PDF)
+ *  - Text formatting (bold, italic, font sizes, colors)
+ *  - Tables and their borders
+ *  - Page margins and layout
+ *  - Multi-column layouts
+ *
+ * Prerequisites:
+ *  - Python must be installed and accessible via `python` command
+ *  - pdf2docx must be installed: `pip install pdf2docx`
+ */
 export async function pdfToWord(filePath: string): Promise<string> {
-  const pdfBuffer = fs.readFileSync(filePath);
-  const parsed = await pdfParse(pdfBuffer);
-
-  const rawText = parsed.text || '';
-  const lines = rawText.split('\n').filter((l) => l.trim().length > 0);
-
-  // Build DOCX paragraphs from extracted lines
-  const paragraphs = lines.map((line) => {
-    const trimmed = line.trim();
-
-    // Heuristic: short lines in ALL CAPS → treat as heading
-    const isHeading =
-      trimmed.length < 60 &&
-      trimmed === trimmed.toUpperCase() &&
-      trimmed.length > 3;
-
-    if (isHeading) {
-      return new Paragraph({
-        text: trimmed,
-        heading: HeadingLevel.HEADING_2,
-        spacing: { before: 240, after: 120 },
-      });
-    }
-
-    return new Paragraph({
-      children: [
-        new TextRun({
-          text: trimmed,
-          size: 24, // 12pt
-        }),
-      ],
-      spacing: { before: 80, after: 80 },
-    });
-  });
-
-  // Add metadata paragraph at the top
-  const metaParagraph = new Paragraph({
-    children: [
-      new TextRun({
-        text: `Converted from PDF — ${parsed.numpages} page(s), ${lines.length} lines extracted`,
-        italics: true,
-        color: '888888',
-        size: 20,
-      }),
-    ],
-    alignment: AlignmentType.CENTER,
-    spacing: { after: 400 },
-  });
-
-  const doc = new Document({
-    sections: [
-      {
-        properties: {},
-        children: [metaParagraph, ...paragraphs],
-      },
-    ],
-  });
-
-  const buffer = await Packer.toBuffer(doc);
   const outputPath = path.join(
     config.files.outputDir,
     `converted_${uuidv4()}.docx`
   );
-  fs.writeFileSync(outputPath, buffer);
+
+  // Path to the Python converter script.
+  // Always resolve from the project root (process.cwd()) so this works in
+  // both dev (ts-node-dev, __dirname = src/services/) and production
+  // (compiled, __dirname = dist/services/). The .py file lives in src/scripts/
+  // and is never copied to dist/.
+  const scriptPath = path.join(process.cwd(), 'src', 'scripts', 'pdf_to_docx.py');
+
+  // Verify the script exists
+  if (!fs.existsSync(scriptPath)) {
+    throw new Error(
+      `Conversion script not found at: ${scriptPath}. ` +
+      `Ensure 'src/scripts/pdf_to_docx.py' exists.`
+    );
+  }
+
+  await runPythonConverter(scriptPath, filePath, outputPath);
 
   return outputPath;
+}
+
+/**
+ * Runs the Python pdf2docx conversion script as a child process.
+ */
+function runPythonConverter(
+  scriptPath: string,
+  inputPath: string,
+  outputPath: string
+): Promise<void> {
+  return new Promise((resolve, reject) => {
+    // Use 'python' on Windows; falls back gracefully
+    const pythonBin = process.platform === 'win32' ? 'python' : 'python3';
+
+    const proc = spawn(pythonBin, [scriptPath, inputPath, outputPath], {
+      stdio: ['ignore', 'pipe', 'pipe'],
+    });
+
+    let stdout = '';
+    let stderr = '';
+
+    proc.stdout.on('data', (data: Buffer) => {
+      stdout += data.toString();
+    });
+
+    proc.stderr.on('data', (data: Buffer) => {
+      stderr += data.toString();
+    });
+
+    proc.on('close', (code: number | null) => {
+      if (code === 0) {
+        // Verify the output file actually exists
+        if (!fs.existsSync(outputPath)) {
+          return reject(
+            new Error('PDF to Word conversion completed but output file is missing.')
+          );
+        }
+        resolve();
+      } else {
+        // Surface the Python error to Node.js callers
+        const errorMsg = stderr.trim() || stdout.trim() || 'Unknown conversion error';
+        reject(
+          new Error(
+            `PDF to Word conversion failed (exit code ${code}): ${errorMsg}\n` +
+            `Ensure Python and pdf2docx are installed: pip install pdf2docx`
+          )
+        );
+      }
+    });
+
+    proc.on('error', (err: Error) => {
+      reject(
+        new Error(
+          `Failed to start Python process: ${err.message}\n` +
+          `Ensure Python is installed and available in PATH.`
+        )
+      );
+    });
+  });
 }

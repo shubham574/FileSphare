@@ -5,6 +5,7 @@ export interface Tool {
   description: string;
   icon: string;
   gradient: string;
+  category: 'Organize' | 'Convert' | 'Edit' | 'Security';
   acceptedFiles: string;
   multiple: boolean;
   endpoint: string;
@@ -28,6 +29,7 @@ export const tools: Tool[] = [
     description: 'Combine multiple PDFs into one seamless document.',
     icon: '🔗',
     gradient: 'from-violet-500 to-purple-600',
+    category: 'Organize',
     acceptedFiles: '.pdf',
     multiple: true,
     endpoint: '/api/merge',
@@ -38,6 +40,7 @@ export const tools: Tool[] = [
     description: 'Separate PDF pages into individual files.',
     icon: '✂️',
     gradient: 'from-orange-500 to-red-500',
+    category: 'Organize',
     acceptedFiles: '.pdf',
     multiple: false,
     endpoint: '/api/split',
@@ -74,9 +77,23 @@ export const tools: Tool[] = [
     description: 'Reduce PDF file size while maintaining quality.',
     icon: '🗜️',
     gradient: 'from-emerald-500 to-teal-600',
+    category: 'Organize',
     acceptedFiles: '.pdf',
     multiple: false,
     endpoint: '/api/compress',
+    options: [
+      {
+        key: 'level',
+        label: 'Compression Level',
+        type: 'select',
+        defaultValue: 'medium',
+        options: [
+          { label: 'Low (Better Quality, Less Compression)', value: 'low' },
+          { label: 'Medium (Balanced)', value: 'medium' },
+          { label: 'Extreme (Lowest Quality, Max Compression)', value: 'high' },
+        ],
+      },
+    ],
   },
   {
     id: 'pdf-to-word',
@@ -84,6 +101,7 @@ export const tools: Tool[] = [
     description: 'Convert PDF documents to editable Word files.',
     icon: '📄',
     gradient: 'from-blue-500 to-indigo-600',
+    category: 'Convert',
     acceptedFiles: '.pdf',
     multiple: false,
     endpoint: '/api/pdf-to-word',
@@ -94,6 +112,7 @@ export const tools: Tool[] = [
     description: 'Transform Word documents into professional PDFs.',
     icon: '📝',
     gradient: 'from-indigo-500 to-purple-600',
+    category: 'Convert',
     acceptedFiles: '.docx',
     multiple: false,
     endpoint: '/api/word-to-pdf',
@@ -104,6 +123,7 @@ export const tools: Tool[] = [
     description: 'Convert JPG images and photos to PDF.',
     icon: '🖼️',
     gradient: 'from-pink-500 to-rose-500',
+    category: 'Convert',
     acceptedFiles: '.jpg,.jpeg,.png,.webp',
     multiple: true,
     endpoint: '/api/jpg-to-pdf',
@@ -114,6 +134,7 @@ export const tools: Tool[] = [
     description: 'Extract PDF pages as high-quality JPG images.',
     icon: '🖼️',
     gradient: 'from-yellow-500 to-orange-500',
+    category: 'Convert',
     acceptedFiles: '.pdf',
     multiple: false,
     endpoint: '/api/pdf-to-jpg',
@@ -124,6 +145,7 @@ export const tools: Tool[] = [
     description: 'Rotate PDF pages by 90, 180, or 270 degrees.',
     icon: '🔄',
     gradient: 'from-cyan-500 to-blue-500',
+    category: 'Organize',
     acceptedFiles: '.pdf',
     multiple: false,
     endpoint: '/api/rotate',
@@ -147,6 +169,7 @@ export const tools: Tool[] = [
     description: 'Stamp text or image watermarks on your PDF.',
     icon: '💧',
     gradient: 'from-violet-500 to-fuchsia-600',
+    category: 'Edit',
     acceptedFiles: '.pdf',
     multiple: false,
     endpoint: '/api/watermark',
@@ -189,6 +212,7 @@ export const tools: Tool[] = [
     description: 'Add automatic page numbers to your PDF.',
     icon: '🔢',
     gradient: 'from-green-500 to-emerald-600',
+    category: 'Edit',
     acceptedFiles: '.pdf',
     multiple: false,
     endpoint: '/api/page-numbers',

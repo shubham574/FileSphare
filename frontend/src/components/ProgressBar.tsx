@@ -3,27 +3,19 @@
 interface ProgressBarProps {
   status: 'idle' | 'uploading' | 'pending' | 'processing' | 'completed' | 'failed';
   progress?: number; // 0-100
+  toolName?: string;
 }
 
 const statusConfig = {
-  idle: { label: '', color: '', show: false },
-  uploading: { label: 'Uploading files...', color: 'from-blue-500 to-cyan-500', show: true },
-  pending: { label: 'Queued, waiting to process...', color: 'from-yellow-500 to-amber-500', show: true },
-  processing: { label: 'Processing your PDF...', color: 'from-violet-500 to-indigo-500', show: true },
-  completed: { label: 'Done! Your file is ready.', color: 'from-green-500 to-emerald-500', show: true },
-  failed: { label: 'Processing failed.', color: 'from-red-500 to-rose-500', show: true },
+  idle: { label: '', show: false },
+  uploading: { label: 'Uploading files...', show: true },
+  pending: { label: 'Queued, waiting to process...', show: true },
+  processing: { label: 'Processing...', show: true },
+  completed: { label: 'Done! Your file is ready.', show: true },
+  failed: { label: 'Processing failed.', show: true },
 };
 
-const statusIcons = {
-  idle: null,
-  uploading: '☁️',
-  pending: '⏳',
-  processing: '⚙️',
-  completed: '✅',
-  failed: '❌',
-};
-
-export default function ProgressBar({ status, progress }: ProgressBarProps) {
+export default function ProgressBar({ status, progress, toolName }: ProgressBarProps) {
   const cfg = statusConfig[status];
   if (!cfg.show) return null;
 
@@ -36,31 +28,35 @@ export default function ProgressBar({ status, progress }: ProgressBarProps) {
     status === 'processing' ? 65 :
     status === 'failed' ? 100 : 0;
 
-  return (
-    <div className="space-y-3 animate-fade-in">
-      {/* Status text */}
-      <div className="flex items-center gap-2">
-        <span className="text-lg" role="img" aria-label={status}>
-          {statusIcons[status]}
-        </span>
-        <span className={`text-sm font-medium ${status === 'failed' ? 'text-red-400' : status === 'completed' ? 'text-green-400' : 'text-slate-300'}`}>
-          {cfg.label}
-        </span>
-        {isIndeterminate && (
-          <div className="flex gap-1 ml-1">
-            <div className="w-1.5 h-1.5 bg-violet-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-            <div className="w-1.5 h-1.5 bg-violet-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-            <div className="w-1.5 h-1.5 bg-violet-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-          </div>
-        )}
-      </div>
+  let displayLabel = cfg.label;
+  if (status === 'processing' && toolName) {
+      displayLabel = `${toolName.replace(' PDF', '')}ing files...`;
+  }
 
-      {/* Bar */}
-      <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-        <div
-          className={`h-full bg-gradient-to-r ${cfg.color} rounded-full transition-all duration-700 ease-out ${isIndeterminate ? 'animate-pulse' : ''}`}
-          style={{ width: `${progressValue}%` }}
-        />
+  return (
+    <div className="bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm border border-outline-variant/10 text-center animate-fade-in w-full">
+      <div className="mb-4">
+        <div className="flex justify-between text-sm font-medium mb-2">
+          <span className={status === 'failed' ? 'text-error font-bold' : 'text-on-surface'}>
+            {displayLabel}
+          </span>
+          {status !== 'failed' && status !== 'completed' && (
+            <span className="text-primary">{progressValue}%</span>
+          )}
+        </div>
+        
+        <div className="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+          <div
+            className={`h-full rounded-full transition-all duration-700 ease-out ${
+                status === 'failed' 
+                ? 'bg-error' 
+                : status === 'completed' 
+                ? 'bg-tertiary text-on-tertiary' 
+                : 'bg-gradient-to-r from-primary to-secondary-container animate-pulse'
+            }`}
+            style={{ width: `${progressValue}%` }}
+          />
+        </div>
       </div>
     </div>
   );

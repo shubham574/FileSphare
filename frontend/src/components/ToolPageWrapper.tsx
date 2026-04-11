@@ -16,7 +16,7 @@ type ProcessStatus = 'idle' | 'uploading' | 'pending' | 'processing' | 'complete
 export default function ToolPageWrapper({ tool }: ToolPageWrapperProps) {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<ProcessStatus>('idle');
-  const [completedJob, setCompletedJob] = useState<{ jobId: string; fileName: string } | null>(null);
+  const [completedJob, setCompletedJob] = useState<{ jobId: string; fileName: string; meta?: any } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [options, setOptions] = useState<Record<string, string | number>>(() => {
     const defaults: Record<string, string | number> = {};
@@ -56,9 +56,14 @@ export default function ToolPageWrapper({ tool }: ToolPageWrapperProps) {
         }
       );
 
+      // We expect the backend might send 'metadata' inside the response if we implemented it, 
+      // but if not we just use empty object. Note: we need to cast or just store any.
+      const resultAny = result as any;
+
       setCompletedJob({
         jobId: result.jobId,
         fileName: result.fileName || `${tool.id}.pdf`,
+        meta: resultAny.metadata || null
       });
       setStatus('completed');
     } catch (err: any) {
@@ -77,58 +82,56 @@ export default function ToolPageWrapper({ tool }: ToolPageWrapperProps) {
   const isProcessing = ['uploading', 'pending', 'processing'].includes(status);
 
   return (
-    <div className="min-h-screen px-4 py-12">
+    <main className="pt-24 pb-20 min-h-screen">
       {/* Background orbs */}
-      <div className="fixed top-32 left-1/4 w-96 h-96 bg-violet-600/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="fixed bottom-32 right-1/4 w-72 h-72 bg-indigo-600/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 pointer-events-none">
+        <div className="absolute top-[-10%] left-[10%] w-[40%] h-[40%] bg-primary/5 blur-[120px] rounded-full"></div>
+        <div className="absolute bottom-[10%] right-[10%] w-[30%] h-[30%] bg-secondary-container/5 blur-[100px] rounded-full"></div>
+      </div>
 
-      <div className="max-w-2xl mx-auto relative">
-        {/* Back button */}
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-8 text-sm group"
-        >
-          <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-          All Tools
-        </Link>
-
+      <div className="max-w-4xl mx-auto px-6 mb-12">
         {/* Tool Header */}
-        <div className="mb-10">
-          <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${tool.gradient} text-3xl shadow-xl mb-4`}>
-            {tool.icon}
-          </div>
-          <h1 className="text-3xl font-bold text-white mb-2">{tool.name}</h1>
-          <p className="text-slate-400 leading-relaxed">{tool.description}</p>
+        <div className="text-center mb-10 relative">
+          <Link
+            href="/"
+            className="absolute left-0 top-1.5 hidden md:inline-flex items-center gap-2 text-outline hover:text-primary transition-colors text-sm font-semibold tracking-wider group"
+          >
+            <span className="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
+            ALL TOOLS
+          </Link>
+          
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-4">{tool.name}</h1>
+          <p className="text-on-surface-variant text-lg max-w-2xl mx-auto leading-relaxed">{tool.description}</p>
         </div>
 
-        {/* Main Card */}
-        <div className="bg-white/5 border border-white/10 rounded-3xl p-8 space-y-8 backdrop-blur-sm">
+        {/* Drop Zone Area — hide once processing/completed */}
+        {(status === 'idle' || status === 'failed') && (
+          <DropZone
+            acceptedFiles={tool.acceptedFiles}
+            multiple={tool.multiple}
+            onFilesSelected={setSelectedFiles}
+            selectedFiles={selectedFiles}
+          />
+        )}
 
-          {/* Drop Zone — hide once processing/completed */}
-          {(status === 'idle' || status === 'failed') && (
-            <DropZone
-              acceptedFiles={tool.acceptedFiles}
-              multiple={tool.multiple}
-              onFilesSelected={setSelectedFiles}
-              selectedFiles={selectedFiles}
-            />
-          )}
-
-          {/* Tool Options */}
-          {tool.options && tool.options.length > 0 && (status === 'idle' || status === 'failed') && (
-            <div className="space-y-5 border-t border-white/10 pt-6">
-              <h3 className="text-white font-semibold text-sm uppercase tracking-widest">Options</h3>
+        {/* Tool Options */}
+        {tool.options && tool.options.length > 0 && (status === 'idle' || status === 'failed') && (
+          <section className="mt-12 bg-surface-container-high p-8 rounded-3xl animate-fade-in border border-outline-variant/20">
+            <h3 className="text-on-surface font-bold text-lg mb-6 flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary text-xl">settings</span>
+              Tool Options
+            </h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {tool.options.map((opt) => (
-                <div key={opt.key} className="space-y-2">
+                <div key={opt.key} className="space-y-3">
                   <label
                     htmlFor={`opt-${opt.key}`}
-                    className="block text-slate-300 text-sm font-medium"
+                    className="block text-on-surface text-sm font-medium"
                   >
                     {opt.label}
                     {opt.type === 'range' && (
-                      <span className="ml-2 text-violet-400">
+                      <span className="ml-2 text-primary font-bold">
                         {typeof options[opt.key] === 'number'
                           ? (options[opt.key] as number).toFixed(2)
                           : options[opt.key]}
@@ -143,10 +146,10 @@ export default function ToolPageWrapper({ tool }: ToolPageWrapperProps) {
                       onChange={(e) =>
                         setOptions((prev) => ({ ...prev, [opt.key]: e.target.value }))
                       }
-                      className="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-violet-500/60 transition-all"
+                      className="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-3 text-on-surface text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                     >
                       {opt.options?.map((o) => (
-                        <option key={o.value} value={o.value} className="bg-[#1a1f2e]">
+                        <option key={o.value} value={o.value}>
                           {o.label}
                         </option>
                       ))}
@@ -162,7 +165,7 @@ export default function ToolPageWrapper({ tool }: ToolPageWrapperProps) {
                       onChange={(e) =>
                         setOptions((prev) => ({ ...prev, [opt.key]: parseFloat(e.target.value) }))
                       }
-                      className="w-full accent-violet-500"
+                      className="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer accent-primary"
                     />
                   ) : (
                     <input
@@ -177,91 +180,84 @@ export default function ToolPageWrapper({ tool }: ToolPageWrapperProps) {
                           [opt.key]: opt.type === 'number' ? Number(e.target.value) : e.target.value,
                         }))
                       }
-                      className="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-violet-500/60 transition-all placeholder:text-slate-600"
+                      className="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-3 text-on-surface text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-outline"
                     />
                   )}
                 </div>
               ))}
             </div>
-          )}
+          </section>
+        )}
 
-          {/* Progress */}
-          {status !== 'idle' && (
-            <ProgressBar status={status} />
-          )}
+        {/* Process Section */}
+        {status !== 'idle' && status !== 'completed' && (
+          <section className="mt-12 max-w-xl mx-auto flex flex-col items-center gap-6">
+            <ProgressBar status={status} progress={65} toolName={tool.name} />
+            
+            {status === 'failed' && (
+               <div className="bg-error-container border border-error/30 rounded-xl p-4 animate-fade-in w-full text-center">
+                 <p className="text-on-error-container text-sm font-medium">{error}</p>
+                 <button onClick={handleReset} className="mt-4 text-error font-bold hover:underline">Try Again</button>
+               </div>
+            )}
+          </section>
+        )}
 
-          {/* Error */}
-          {error && (
-            <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 animate-fade-in">
-              <p className="text-red-400 text-sm font-medium">⚠️ {error}</p>
-            </div>
-          )}
-
-          {/* Action Buttons */}
-          <div className="space-y-3">
-            {status === 'completed' && completedJob ? (
-              <>
-                {/*
-                  Download link uses the Next.js API proxy (/api/download/:jobId) which
-                  is same-origin — the `download` attribute works perfectly with proper filename.
-                */}
-                <a
-                  href={getProxyDownloadUrl(completedJob.jobId)}
-                  download={completedJob.fileName}
-                  className={`w-full flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-gradient-to-r ${tool.gradient} text-white font-semibold text-lg shadow-lg hover:opacity-90 active:scale-[0.98] transition-all cursor-pointer`}
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                  </svg>
-                  Download {completedJob.fileName}
-                </a>
-
-                <button
-                  onClick={handleReset}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white/5 border border-white/15 text-slate-300 hover:text-white hover:bg-white/10 font-medium transition-all"
-                >
-                  Process Another File
-                </button>
-              </>
-            ) : (
+        {/* Final Trigger Button (only visible when idle or failed and files selected) */}
+        {(status === 'idle' || status === 'failed') && selectedFiles.length > 0 && (
+           <section className="mt-12 max-w-xl mx-auto text-center animate-fade-in">
               <button
                 onClick={handleProcess}
-                disabled={isProcessing || selectedFiles.length === 0}
-                className={`
-                  w-full flex items-center justify-center gap-3 px-6 py-4 rounded-xl font-semibold text-lg transition-all
-                  ${isProcessing || selectedFiles.length === 0
-                    ? 'bg-white/5 border border-white/10 text-slate-500 cursor-not-allowed'
-                    : `bg-gradient-to-r ${tool.gradient} text-white shadow-lg hover:opacity-90 active:scale-[0.98] hover:shadow-xl`
-                  }
-                `}
+                disabled={isProcessing}
+                className="w-full bg-secondary-container text-on-secondary-container py-5 rounded-xl font-bold text-xl hover:shadow-lg hover:-translate-y-0.5 transition-all active:scale-95 flex items-center justify-center gap-3"
               >
-                {isProcessing ? (
-                  <>
-                    <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                    </svg>
-                    Processing...
-                  </>
-                ) : (
-                  <>
-                    <span>{tool.icon}</span>
-                    {tool.name}
-                  </>
-                )}
+                  <span className="material-symbols-outlined">{tool.icon.length > 2 ? tool.icon : 'bolt'}</span>
+                  {tool.name}
               </button>
-            )}
-          </div>
-        </div>
-
-        {/* Security note */}
-        <div className="mt-6 flex items-center justify-center gap-2 text-slate-600 text-sm">
-          <svg className="w-4 h-4 text-green-500/60" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-          </svg>
-          Your files are automatically deleted after 1 hour
-        </div>
+           </section>
+        )}
       </div>
-    </div>
+
+      {/* Results Section (Success State) */}
+      {status === 'completed' && completedJob && (
+        <section className="max-w-4xl mx-auto px-6 mt-12 animate-fade-in">
+          <div className="glass-panel p-10 rounded-[2.5rem] flex flex-col md:flex-row items-center gap-8 border border-white">
+            <div className="w-24 h-24 bg-tertiary-fixed-dim rounded-3xl flex items-center justify-center shrink-0 shadow-inner">
+              <span className="material-symbols-outlined-fill text-tertiary text-5xl">verified</span>
+            </div>
+            
+            <div className="flex-grow text-center md:text-left">
+              <h3 className="text-2xl font-bold text-on-surface mb-1">Your file is ready!</h3>
+              <p className="text-on-surface-variant flex flex-col sm:flex-row gap-x-3 gap-y-1 items-center md:items-start font-medium">
+                <span className="truncate max-w-[200px] sm:max-w-xs">{completedJob.fileName}</span>
+                {completedJob.meta?.outputSize && (
+                  <span className="text-tertiary bg-tertiary-fixed text-xs px-2 py-0.5 rounded-full">
+                    {Math.round(completedJob.meta.outputSize / 1024)} KB
+                    {completedJob.meta.reductionPercent > 0 && ` (-${completedJob.meta.reductionPercent}%)`}
+                  </span>
+                )}
+              </p>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+              <button
+                onClick={handleReset}
+                className="bg-surface-container-highest text-on-surface px-6 py-3 rounded-xl font-semibold hover:bg-surface-dim transition-colors flex items-center justify-center gap-2 whitespace-nowrap"
+              >
+                <span className="material-symbols-outlined text-lg">refresh</span> Start Over
+              </button>
+              <a
+                href={getProxyDownloadUrl(completedJob.jobId)}
+                download={completedJob.fileName}
+                className="bg-primary text-on-primary px-10 py-3 rounded-xl font-bold shadow-lg shadow-primary/20 hover:shadow-xl transition-all flex items-center justify-center gap-2 whitespace-nowrap"
+              >
+                <span className="material-symbols-outlined">download</span> Download
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+
+    </main>
   );
 }

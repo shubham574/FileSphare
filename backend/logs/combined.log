@@ -158,3 +158,139 @@
 ╚══════════════════════════════════════════════════╝
     
 2026-04-11 04:37:48 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-11 18:30:14 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-11 18:30:14 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-11 18:30:14 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-11 18:31:11 [info]: Dispatched job f81ccc4b-db0a-46e4-a711-16316a04f2d5 for tool: merge
+2026-04-11 18:31:11 [info]: [JobRunner] Processing job f81ccc4b-db0a-46e4-a711-16316a04f2d5 — tool: merge
+2026-04-11 18:31:11 [info]: [JobRunner] Job f81ccc4b-db0a-46e4-a711-16316a04f2d5 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\merged_713a6a0c-d55d-4a1a-ab78-f128346d28a3.pdf
+2026-04-11 18:31:21 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\16f1420a-18da-4ce6-8863-470d0c538cc9.pdf
+2026-04-11 18:31:21 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\ac0f5c2e-66a2-4d4c-bdce-d6ff19f78506.pdf
+2026-04-11 18:32:07 [info]: Dispatched job 78ef20c2-c8c5-4dd9-b18c-49f0e12f8e81 for tool: split
+2026-04-11 18:32:07 [info]: [JobRunner] Processing job 78ef20c2-c8c5-4dd9-b18c-49f0e12f8e81 — tool: split
+2026-04-11 18:32:07 [info]: [JobRunner] Job 78ef20c2-c8c5-4dd9-b18c-49f0e12f8e81 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\split_d0ccaf43-f3b9-4c0b-b8e8-519d5e712153.zip
+2026-04-11 18:32:17 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\46d5b77e-db33-4c3e-8988-90a60ba2ccfc.pdf
+2026-04-11 18:33:01 [info]: Dispatched job 60861400-fe4c-49c3-bcf0-52f7827fb7e2 for tool: split
+2026-04-11 18:33:01 [info]: [JobRunner] Processing job 60861400-fe4c-49c3-bcf0-52f7827fb7e2 — tool: split
+2026-04-11 18:33:01 [info]: [JobRunner] Job 60861400-fe4c-49c3-bcf0-52f7827fb7e2 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\split_c156b6af-6f0c-49f9-8c8c-4c7ff8b23d4d.zip
+2026-04-11 18:33:11 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\bb84d2f7-0995-435a-903d-cc2ed0bc5105.pdf
+2026-04-11 18:33:42 [info]: Dispatched job dc566dfa-525f-4089-a4db-02aec60e5568 for tool: compress
+2026-04-11 18:33:42 [info]: [JobRunner] Processing job dc566dfa-525f-4089-a4db-02aec60e5568 — tool: compress
+2026-04-11 18:33:42 [info]: [JobRunner] Job dc566dfa-525f-4089-a4db-02aec60e5568 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_8e8eb29e-1b4d-40f1-b463-2b7aece72075.pdf
+2026-04-11 18:33:52 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\efe46d7c-cd45-44c3-a848-16650d246b27.pdf
+2026-04-11 18:34:35 [info]: Dispatched job f24f28ee-df28-40ee-8751-83434649bfd4 for tool: pdf-to-word
+2026-04-11 18:34:35 [info]: [JobRunner] Processing job f24f28ee-df28-40ee-8751-83434649bfd4 — tool: pdf-to-word
+2026-04-11 18:34:35 [info]: [JobRunner] Job f24f28ee-df28-40ee-8751-83434649bfd4 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\converted_13dd8246-b091-4cf7-9432-53e2292ef1df.docx
+2026-04-11 18:34:45 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\4f31728f-e206-4721-9452-24a6417b0b77.pdf
+2026-04-11 18:40:00 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-11 18:40:00 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-11 18:40:00 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-11 18:40:21 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-11 18:40:21 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-11 18:40:21 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-11 18:42:22 [info]: Dispatched job 22050604-751e-4f49-8d4a-e647e5c8462b for tool: pdf-to-word
+2026-04-11 18:42:22 [info]: [JobRunner] Processing job 22050604-751e-4f49-8d4a-e647e5c8462b — tool: pdf-to-word
+2026-04-11 18:42:23 [info]: [JobRunner] Job 22050604-751e-4f49-8d4a-e647e5c8462b completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\converted_ff4c96eb-2385-4396-82a7-6a3c09cc52c7.docx
+2026-04-11 18:42:33 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\1c4cd231-c2d1-47fb-a393-9e4f984b1a5e.pdf
+2026-04-11 18:48:00 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-11 18:48:00 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-11 18:48:00 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-11 18:48:10 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-11 18:48:11 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-11 18:48:11 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-11 18:48:21 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-11 18:48:21 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-11 18:48:21 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-11 18:48:54 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-11 18:48:54 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-11 18:48:54 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-11 18:51:40 [info]: Dispatched job c86c6c9b-573e-43ca-b774-cd71b218014c for tool: compress
+2026-04-11 18:51:40 [info]: [JobRunner] Processing job c86c6c9b-573e-43ca-b774-cd71b218014c — tool: compress
+2026-04-11 18:51:41 [info]: [JobRunner] Job c86c6c9b-573e-43ca-b774-cd71b218014c completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_3db0519d-1f05-4ff4-92b8-db3142fec86a.pdf
+2026-04-11 18:51:51 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\34452762-c0ca-4c91-9f47-5c3fd54c5201.pdf
+2026-04-11 19:00:00 [info]: Running scheduled file cleanup...
+2026-04-11 19:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_0cf5884e-8978-43ce-98bb-453747acdf90.pdf
+2026-04-11 19:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_0ee8e48c-d71a-4cf5-96b7-606ebf58eb15.pdf
+2026-04-11 19:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_1dd6d080-9fff-47a2-8398-fd614c651ee2.pdf
+2026-04-11 19:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_5b037ea0-8b42-4f6f-b797-2f427893f558.pdf
+2026-04-11 19:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_ec05ddd6-1f2d-4708-8113-cd75d3602468.pdf
+2026-04-11 19:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_f9d804a9-d18c-429b-bc53-7fc2f565466e.pdf
+2026-04-11 19:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\converted_76a43c79-fb76-40f4-8d50-5fd8772724fb.docx
+2026-04-11 19:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\converted_e040b0d4-bfeb-455d-afed-a4c2d2bf052d.pdf
+2026-04-11 19:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\images_to_pdf_fbafa2f3-e1dc-4048-9b96-f53a3d016b66.pdf
+2026-04-11 19:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\merged_12e8d8c0-6cd4-4d69-b4ec-cff21ffa442b.pdf
+2026-04-11 19:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\merged_d5911b5f-4346-4506-a967-5a3f7b9186de.pdf
+2026-04-11 19:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\numbered_cb9e9424-7db7-46fc-a0c6-0af4499c061b.pdf
+2026-04-11 19:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\pdf_pages_6293fd1e-83d3-4a62-9773-3077dfc7f486.zip
+2026-04-11 19:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\pdf_pages_62950e4f-db63-485d-95ec-6822261df2b7.zip
+2026-04-11 19:00:00 [info]: Scheduled cleanup complete.
+2026-04-11 19:27:32 [warn]: Operational error [400]: Upload at least 2 PDF files.
+2026-04-11 20:00:00 [info]: Running scheduled file cleanup...
+2026-04-11 20:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_3db0519d-1f05-4ff4-92b8-db3142fec86a.pdf
+2026-04-11 20:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_8e8eb29e-1b4d-40f1-b463-2b7aece72075.pdf
+2026-04-11 20:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\converted_13dd8246-b091-4cf7-9432-53e2292ef1df.docx
+2026-04-11 20:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\converted_ff4c96eb-2385-4396-82a7-6a3c09cc52c7.docx
+2026-04-11 20:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\merged_713a6a0c-d55d-4a1a-ab78-f128346d28a3.pdf
+2026-04-11 20:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\split_c156b6af-6f0c-49f9-8c8c-4c7ff8b23d4d.zip
+2026-04-11 20:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\split_d0ccaf43-f3b9-4c0b-b8e8-519d5e712153.zip
+2026-04-11 20:00:00 [debug]: Cleaned up old file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\test_output.docx
+2026-04-11 20:00:00 [info]: Scheduled cleanup complete.
+2026-04-11 20:03:00 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-11 20:03:00 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-11 20:03:00 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    

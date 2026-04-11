@@ -69,7 +69,10 @@ export async function compressController(req: Request, res: Response, next: Next
   if (!file) return next(createError('Upload a PDF file.', 400));
   if (!(await validatePdf(file.path))) return next(createError('Invalid PDF file.', 400));
 
-  dispatch('compress', [file.path], {}, req, res);
+  const validLevels = ['low', 'medium', 'high'];
+  const level = validLevels.includes(req.body.level) ? req.body.level : 'medium';
+
+  dispatch('compress', [file.path], { level }, req, res);
 }
 
 // ─── Rotate ──────────────────────────────────────────────────────────────

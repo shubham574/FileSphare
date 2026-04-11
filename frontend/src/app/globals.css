@@ -2,7 +2,57 @@
 
 @theme {
   --font-family-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --color-background: #080c14;
+  --font-family-headline: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-family-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-family-label: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --color-on-secondary-fixed-variant: #5a00c6;
+  --color-inverse-primary: #b4c5ff;
+  --color-on-secondary-fixed: #25005a;
+  --color-background: #faf9ff;
+  --color-surface-dim: #d3d9f0;
+  --color-surface-container-highest: #dbe2f9;
+  --color-primary: #004ac6;
+  --color-surface: #faf9ff;
+  --color-outline: #737686;
+  --color-on-tertiary-fixed: #00210e;
+  --color-tertiary-fixed: #71fda7;
+  --color-surface-variant: #dbe2f9;
+  --color-on-secondary-container: #fffbff;
+  --color-on-surface-variant: #434655;
+  --color-on-primary: #ffffff;
+  --color-on-primary-fixed: #00174b;
+  --color-error-container: #ffdad6;
+  --color-on-background: #141b2c;
+  --color-on-tertiary-container: #c2ffd1;
+  --color-secondary-container: #8a4cfc;
+  --color-primary-fixed-dim: #b4c5ff;
+  --color-on-error: #ffffff;
+  --color-on-primary-container: #eeefff;
+  --color-on-surface: #141b2c;
+  --color-surface-container: #e9edff;
+  --color-surface-bright: #faf9ff;
+  --color-surface-container-low: #f1f3ff;
+  --color-on-primary-fixed-variant: #003ea8;
+  --color-surface-tint: #0053db;
+  --color-inverse-surface: #293041;
+  --color-surface-container-high: #e1e8ff;
+  --color-tertiary-container: #007e46;
+  --color-inverse-on-surface: #edf0ff;
+  --color-secondary: #712ae2;
+  --color-secondary-fixed: #eaddff;
+  --color-primary-container: #2563eb;
+  --color-primary-fixed: #dbe1ff;
+  --color-error: #ba1a1a;
+  --color-on-error-container: #93000a;
+  --color-on-tertiary: #ffffff;
+  --color-outline-variant: #c3c6d7;
+  --color-tertiary-fixed-dim: #51df8d;
+  --color-on-tertiary-fixed-variant: #00522c;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-secondary: #ffffff;
+  --color-tertiary: #006236;
+  --color-secondary-fixed-dim: #d2bbff;
 }
 
 /* ─── Global Resets ───────────────────────────────────────────────────────── */
@@ -15,58 +65,64 @@ html {
 }
 
 body {
-  background: #080c14;
-  background-image:
-    radial-gradient(ellipse at 20% 50%, rgba(139, 92, 246, 0.07) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+  background: var(--color-background);
+  color: var(--color-on-background);
   min-height: 100vh;
 }
 
-/* ─── Glassmorphism Nav ───────────────────────────────────────────────────── */
+/* ─── Glass & Fluid Specific Styles ───────────────────────────────────────── */
+:root {
+  --glass-nav-bg: rgba(255, 255, 255, 0.8);
+  --glass-nav-border: rgba(0, 0, 0, 0.05);
+  --glass-card-bg: rgba(255, 255, 255, 0.7);
+  --glass-panel-bg: rgba(250, 249, 255, 0.8);
+}
+
+.dark {
+  --color-background: #0f172a;
+  --color-surface-container-lowest: #020617;
+  --color-surface-container-low: #0f172a;
+  --color-surface-container: #1e293b;
+  --color-surface-container-high: #1e293b;
+  --color-surface-container-highest: #334155;
+  --color-on-background: #f8fafc;
+  --color-on-surface: #f8fafc;
+  --color-on-surface-variant: #cbd5e1;
+  --color-outline-variant: #334155;
+  
+  --glass-nav-bg: rgba(15, 23, 42, 0.8);
+  --glass-nav-border: rgba(255, 255, 255, 0.05);
+  --glass-card-bg: rgba(30, 41, 59, 0.7);
+  --glass-panel-bg: rgba(15, 23, 42, 0.8);
+}
+
 .glass-nav {
-  background: rgba(8, 12, 20, 0.8);
+  background: var(--glass-nav-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--glass-nav-border);
 }
 
-/* ─── Animations ──────────────────────────────────────────────────────────── */
-@keyframes fade-in {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+.glass-card {
+  background: var(--glass-card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
-@keyframes bounce-gentle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+.glass-panel {
+  background: var(--glass-panel-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.6); }
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(3deg); }
-}
-
-.animate-fade-in        { animation: fade-in 0.4s ease-out forwards; }
-.animate-bounce-gentle  { animation: bounce-gentle 1s ease-in-out infinite; }
-.animate-pulse-glow     { animation: pulse-glow 2s ease-in-out infinite; }
-.animate-float          { animation: float 6s ease-in-out infinite; }
-
-/* ─── Hero Gradient Text ──────────────────────────────────────────────────── */
-.gradient-text {
-  background: linear-gradient(135deg, #a78bfa 0%, #818cf8 40%, #38bdf8 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.material-symbols-outlined-fill {
+  font-family: 'Material Symbols Outlined';
+  font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
 }
 
 /* ─── Scrollbar ───────────────────────────────────────────────────────────── */
@@ -74,18 +130,18 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0d1117;
+  background: var(--color-surface);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(139, 92, 246, 0.4);
+  background: var(--color-outline-variant);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(139, 92, 246, 0.6);
+  background: var(--color-outline);
 }
 
 /* ─── Selection ───────────────────────────────────────────────────────────── */
 ::selection {
-  background: rgba(139, 92, 246, 0.3);
-  color: #e2e8f0;
+  background: var(--color-primary-fixed);
+  color: var(--color-on-primary-fixed);
 }
