@@ -19,7 +19,7 @@ import { config } from '../config';
 const toolServiceMap: Record<string, (data: PdfJobData) => Promise<string>> = {
   merge: (data) => mergePdfs(data.inputFiles),
   split: (data) => splitPdf(data.inputFiles[0], data.options),
-  compress: (data) => compressPdf(data.inputFiles[0]),
+  compress: async (data) => (await compressPdf(data.inputFiles[0], data.options)).outputPath,
   rotate: (data) => rotatePdf(data.inputFiles[0], data.options),
   watermark: (data) => addWatermark(data.inputFiles[0], data.options),
   'page-numbers': (data) => addPageNumbers(data.inputFiles[0], data.options),
