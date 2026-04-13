@@ -11,13 +11,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'FileSphere — Free Online PDF Tools',
+  title: 'FileSphere — All-in-One PDF, Image & Video Tools',
   description:
-    'A powerful suite of free online PDF tools. Merge, split, compress, convert, rotate, watermark, and add page numbers to your PDFs — fast and secure.',
-  keywords: ['PDF tools', 'merge PDF', 'split PDF', 'compress PDF', 'PDF to Word', 'online PDF editor'],
+    'A powerful suite of free online tools. Merge, split, compress, and convert PDFs, Images, and Videos — fast, free, and secure.',
+  keywords: ['PDF tools', 'image compression', 'video converter', 'image converter', 'video compression', 'merge PDF', 'split PDF'],
   openGraph: {
-    title: 'FileSphere — Free Online PDF Tools',
-    description: 'Merge, split, compress, convert and edit PDFs for free.',
+    title: 'FileSphere — All-in-One File Processing',
+    description: 'Merge, split, compress, and convert PDFs, Images, and Videos for free.',
     type: 'website',
   },
 };

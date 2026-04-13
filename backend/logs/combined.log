@@ -650,3 +650,7 @@
     
 2026-04-13 15:49:00 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
 2026-04-13 15:49:00 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:50:37 [info]: Dispatched job b3ad4ebb-7a56-4182-8328-c7a892cd259c for tool: video-compress
+2026-04-13 15:50:37 [info]: [JobRunner] Processing job b3ad4ebb-7a56-4182-8328-c7a892cd259c — tool: video-compress
+2026-04-13 15:50:44 [info]: [JobRunner] Job b3ad4ebb-7a56-4182-8328-c7a892cd259c completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_ec312329-8e92-40b3-a921-3f9c7f0affb7.mp4
+2026-04-13 15:50:54 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\6f677789-6323-4084-9d67-7e181b9b2020.mp4

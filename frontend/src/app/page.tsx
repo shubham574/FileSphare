@@ -61,10 +61,10 @@ export default function Home() {
             Streamlined Productivity
           </span>
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface mb-8 max-w-4xl mx-auto leading-[1.1]">
-            All Your File Tools in <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">One Place</span>
+            All Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Media Tools</span> in One Place
           </h1>
           <p className="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto mb-12 leading-relaxed">
-            Merge, split, compress, and convert your documents with precision. The architectural standard for file management, designed for modern workflows.
+            Merge, split, compress, and convert your documents, images, and videos with cinematic precision. The architectural standard for file management.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -159,7 +159,7 @@ export default function Home() {
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-on-surface mb-6 leading-tight">Why Choose FileSphere?</h2>
           <p className="text-on-surface-variant text-lg mb-16 opacity-90 max-w-2xl mx-auto">
-            We provide an architectural-grade suite of tools designed to ensure your document handling is fast, secure, and flawlessly precise.
+            We provide a professional-grade suite of tools designed to ensure your documents, images, and videos are handled with speed and flawlessly precision.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
@@ -170,7 +170,7 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-bold text-on-surface mb-4">Lightning Fast</h3>
               <p className="text-on-surface-variant text-sm leading-relaxed">
-                Our optimized processing engine ensures your complex PDFs convert and compress in milliseconds without heavy server delays. Efficiency at scale.
+                Our optimized processing engine ensures your complex files—whether PDFs, 4K videos, or high-res images—convert and compress in seconds. Efficiency at scale.
               </p>
             </div>
             
@@ -192,7 +192,7 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-bold text-on-surface mb-4">Uncompromised Quality</h3>
               <p className="text-on-surface-variant text-sm leading-relaxed">
-                Whether you compress a simple brochure or convert a complex technical blueprint, our advanced algorithms preserve layout fidelity flawlessly.
+                Whether you compress a simple document or convert a high-bitrate video, our advanced algorithms preserve every detail and layout flawlessly.
               </p>
             </div>
           </div>
