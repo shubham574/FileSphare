@@ -430,3 +430,223 @@
 ╚══════════════════════════════════════════════════╝
     
 2026-04-13 14:52:04 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-13 14:56:41 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 14:56:41 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 14:56:41 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-13 14:56:41 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-13 15:00:00 [info]: Running scheduled file cleanup...
+2026-04-13 15:00:00 [info]: Scheduled cleanup complete.
+2026-04-13 15:16:50 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:16:50 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:16:50 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:16:50 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-13 15:16:50 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-13 15:16:50 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-13 15:18:08 [info]: Dispatched job 593cba89-4cd1-464f-9476-bd0e126662ba for tool: image-compress
+2026-04-13 15:18:08 [info]: [JobRunner] Processing job 593cba89-4cd1-464f-9476-bd0e126662ba — tool: image-compress
+2026-04-13 15:18:08 [info]: [JobRunner] Job 593cba89-4cd1-464f-9476-bd0e126662ba completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_a0c2d5ac-f18a-4dfa-baad-8250ea1b96e0.jpeg
+2026-04-13 15:18:18 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\16443a25-f855-4914-9223-dd5acf9dd8e4.jpeg
+2026-04-13 15:18:39 [info]: Dispatched job 512a7324-4552-4f60-b35a-e7d131e926bd for tool: image-compress
+2026-04-13 15:18:39 [info]: [JobRunner] Processing job 512a7324-4552-4f60-b35a-e7d131e926bd — tool: image-compress
+2026-04-13 15:18:39 [info]: [JobRunner] Job 512a7324-4552-4f60-b35a-e7d131e926bd completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_7c1a71b5-0790-491a-bf3b-1c2d8a2cc584.jpeg
+2026-04-13 15:18:49 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\84bcc023-16e6-4e58-9693-17510848b8d4.jpeg
+2026-04-13 15:21:13 [info]: Dispatched job 6d9d6a2f-9008-482f-ae99-862b87dbb423 for tool: image-convert
+2026-04-13 15:21:13 [info]: [JobRunner] Processing job 6d9d6a2f-9008-482f-ae99-862b87dbb423 — tool: image-convert
+2026-04-13 15:21:13 [info]: [JobRunner] Job 6d9d6a2f-9008-482f-ae99-862b87dbb423 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\converted_f7004ac5-69b9-44a9-85e2-b82fb13a9cfb.png
+2026-04-13 15:21:23 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\d48a9349-fba7-4b8a-a04f-c4802c414ccc.jpg
+2026-04-13 15:21:49 [info]: Dispatched job 700705be-cfe2-425f-93a1-0db827e75730 for tool: image-convert
+2026-04-13 15:21:49 [info]: [JobRunner] Processing job 700705be-cfe2-425f-93a1-0db827e75730 — tool: image-convert
+2026-04-13 15:21:49 [info]: [JobRunner] Job 700705be-cfe2-425f-93a1-0db827e75730 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\converted_16915188-8e30-4daa-9251-08f58e0cad69.png
+2026-04-13 15:21:59 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\c3feced3-a2ef-4ee5-8f88-7d8c94676795.webp
+2026-04-13 15:24:48 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:24:48 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:24:48 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:24:48 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-13 15:24:48 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-13 15:24:48 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-13 15:24:48 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-13 15:25:32 [info]: Dispatched job e7db1216-1745-49bb-9a52-a02a10b25d11 for tool: image-convert
+2026-04-13 15:25:32 [info]: [JobRunner] Processing job e7db1216-1745-49bb-9a52-a02a10b25d11 — tool: image-convert
+2026-04-13 15:25:32 [info]: [JobRunner] Job e7db1216-1745-49bb-9a52-a02a10b25d11 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\converted_384454ef-bdac-4037-945e-e48e38fd8741.png
+2026-04-13 15:25:42 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\157878d9-30ba-43df-8184-78c9ddbccd28.jpg
+2026-04-13 15:30:16 [error]: Error: File type not allowed: .mp4
+    at fileFilter (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\src\middleware\upload.ts:35:8)
+    at wrappedFileFilter (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\multer\lib\make-middleware.js:109:7)
+    at Multipart.emit (node:events:518:28)
+    at HeaderParser.cb (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\busboy\lib\types\multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Multipart.Writable.write (node:internal/streams/writable:510:10)
+    at IncomingMessage.ondata (node:internal/streams/readable:1009:22)
+    at IncomingMessage.emit (node:events:518:28)
+    at IncomingMessage.Readable.read (node:internal/streams/readable:782:10)
+2026-04-13 15:36:19 [error]: Error: File type not allowed: .mp4
+    at fileFilter (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\src\middleware\upload.ts:35:8)
+    at wrappedFileFilter (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\multer\lib\make-middleware.js:109:7)
+    at Multipart.emit (node:events:518:28)
+    at HeaderParser.cb (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\busboy\lib\types\multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Multipart.Writable.write (node:internal/streams/writable:510:10)
+    at IncomingMessage.ondata (node:internal/streams/readable:1009:22)
+    at IncomingMessage.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+2026-04-13 15:37:04 [info]: Dispatched job 27643232-7fa7-4838-a685-aa293b09e14c for tool: image-compress
+2026-04-13 15:37:04 [info]: [JobRunner] Processing job 27643232-7fa7-4838-a685-aa293b09e14c — tool: image-compress
+2026-04-13 15:37:05 [info]: [JobRunner] Job 27643232-7fa7-4838-a685-aa293b09e14c completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_3748d8e1-23bf-4984-b7ba-68853a064939.jpeg
+2026-04-13 15:37:15 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\8d9fb4ba-e032-4f19-a591-d2e7bec29d3d.jpeg
+2026-04-13 15:37:42 [error]: Error: File type not allowed: .mp4
+    at fileFilter (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\src\middleware\upload.ts:35:8)
+    at wrappedFileFilter (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\multer\lib\make-middleware.js:109:7)
+    at Multipart.emit (node:events:518:28)
+    at HeaderParser.cb (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\busboy\lib\types\multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Multipart.Writable.write (node:internal/streams/writable:510:10)
+    at IncomingMessage.ondata (node:internal/streams/readable:1009:22)
+    at IncomingMessage.emit (node:events:518:28)
+    at IncomingMessage.Readable.read (node:internal/streams/readable:782:10)
+2026-04-13 15:39:40 [error]: Error: File type not allowed: .mp4
+    at fileFilter (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\src\middleware\upload.ts:35:8)
+    at wrappedFileFilter (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\multer\lib\make-middleware.js:109:7)
+    at Multipart.emit (node:events:518:28)
+    at HeaderParser.cb (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\node_modules\busboy\lib\types\multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Multipart.Writable.write (node:internal/streams/writable:510:10)
+    at IncomingMessage.ondata (node:internal/streams/readable:1009:22)
+    at IncomingMessage.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+2026-04-13 15:40:52 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:40:52 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:40:52 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:40:52 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-13 15:40:52 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-13 15:40:52 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-13 15:40:52 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-13 15:41:49 [info]: Dispatched job 54a7b913-b03c-4b07-bbe1-0fa285bab413 for tool: video-compress
+2026-04-13 15:41:49 [info]: [JobRunner] Processing job 54a7b913-b03c-4b07-bbe1-0fa285bab413 — tool: video-compress
+2026-04-13 15:41:56 [info]: [JobRunner] Job 54a7b913-b03c-4b07-bbe1-0fa285bab413 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_3870e234-a664-4574-88f6-92f18c040d7c.mp4
+2026-04-13 15:42:06 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\f4f4d416-1039-4fde-b08c-7bae3d4d08b2.mp4
+2026-04-13 15:42:13 [info]: Dispatched job 6521da30-c360-4c2e-96be-726724d63e46 for tool: video-compress
+2026-04-13 15:42:13 [info]: [JobRunner] Processing job 6521da30-c360-4c2e-96be-726724d63e46 — tool: video-compress
+2026-04-13 15:42:23 [info]: [JobRunner] Job 6521da30-c360-4c2e-96be-726724d63e46 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\compressed_488b2d74-4121-4f6b-a41f-2b794c2fa8ae.mp4
+2026-04-13 15:42:33 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\e0596da0-23cc-4edb-836a-d93298a47c39.mp4
+2026-04-13 15:44:34 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:44:34 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:44:34 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:44:34 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-13 15:44:34 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-13 15:44:34 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-13 15:44:34 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-13 15:45:25 [info]: Dispatched job 29ed7264-bef9-4a3d-a4f8-09c57fd6c6b5 for tool: video-convert
+2026-04-13 15:45:25 [info]: [JobRunner] Processing job 29ed7264-bef9-4a3d-a4f8-09c57fd6c6b5 — tool: video-convert
+2026-04-13 15:45:32 [info]: [JobRunner] Job 29ed7264-bef9-4a3d-a4f8-09c57fd6c6b5 completed → C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\outputs\converted_cda71a6b-318e-465c-9e26-29b6097108e5.gif
+2026-04-13 15:45:42 [debug]: Deleted file: C:\Users\shubham maurya\Desktop\Practice_Project\iLovePDF\backend\uploads\1de2e793-c1b9-4073-8b23-50bfa2d41e47.mp4
+2026-04-13 15:48:34 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:48:34 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:48:34 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:48:34 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-13 15:48:34 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-13 15:48:44 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:48:44 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:48:44 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-13 15:48:44 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-13 15:48:44 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:48:52 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:48:52 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:48:53 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:48:53 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-13 15:48:53 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-13 15:49:00 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:49:00 [info]: File cleanup scheduled every 60 minutes (TTL: 60min)
+2026-04-13 15:49:00 [info]: 
+╔══════════════════════════════════════════════════╗
+║       FileSphere Backend API — Running             ║
+║   URL  : http://localhost:5000                 ║
+║   Mode : development                          ║
+║   Jobs : In-Memory (no Redis required)           ║
+╚══════════════════════════════════════════════════╝
+    
+2026-04-13 15:49:00 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare
+2026-04-13 15:49:00 [info]: MongoDB connected: mongodb://localhost:27017/FileSphare

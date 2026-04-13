@@ -35,9 +35,18 @@ export default function DropZone({
     multiple,
     accept: acceptedFiles
       .split(',')
-      .reduce((acc, ext) => {
-        const mime = extToMime(ext.trim());
-        if (mime) acc[mime] = [ext.trim()];
+      .reduce((acc, item) => {
+        const trimmed = item.trim();
+        if (trimmed.includes('/')) {
+          // It's already a MIME type or wildcard (e.g., video/*)
+          acc[trimmed] = [];
+        } else {
+          const mime = extToMime(trimmed);
+          if (mime) {
+            if (!acc[mime]) acc[mime] = [];
+            acc[mime].push(trimmed);
+          }
+        }
         return acc;
       }, {} as Record<string, string[]>),
     onDragEnter: () => setDragActive(true),
@@ -137,6 +146,13 @@ function extToMime(ext: string): string {
     '.jpeg': 'image/jpeg',
     '.png': 'image/png',
     '.webp': 'image/webp',
+    '.avif': 'image/avif',
+    '.gif': 'image/gif',
+    '.mp4': 'video/mp4',
+    '.webm': 'video/webm',
+    '.mov': 'video/quicktime',
+    '.avi': 'video/x-msvideo',
+    '.mkv': 'video/x-matroska',
   };
-  return map[ext] || 'application/octet-stream';
+  return map[ext.toLowerCase()] || 'application/octet-stream';
 }

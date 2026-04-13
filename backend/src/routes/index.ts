@@ -20,6 +20,16 @@ import {
   headerFooterController,
 } from '../controllers/pdf.controller';
 
+import {
+  compressImageController,
+  convertImageController,
+} from '../controllers/image.controller';
+
+import {
+  compressVideoController,
+  convertVideoController,
+} from '../controllers/video.controller';
+
 const router = Router();
 
 // ─── PDF Tool Endpoints ────────────────────────────────────────────────────
@@ -35,6 +45,14 @@ router.post('/pdf-to-jpg',   uploadLimiter, upload.single('file'),       pdfToJp
 router.post('/pdf-to-word',  uploadLimiter, upload.single('file'),       pdfToWordController);
 router.post('/word-to-pdf',  uploadLimiter, upload.single('file'),       wordToPdfController);
 router.post('/header-footer', uploadLimiter, upload.single('file'),      headerFooterController);
+
+// Image
+router.post('/image/compress', uploadLimiter, upload.single('file'),     compressImageController);
+router.post('/image/convert',  uploadLimiter, upload.single('file'),     convertImageController);
+
+// Video
+router.post('/video/compress', uploadLimiter, upload.single('file'),     compressVideoController);
+router.post('/video/convert',  uploadLimiter, upload.single('file'),     convertVideoController);
 
 // ─── Job Status (in-memory) ────────────────────────────────────────────────
 
@@ -53,13 +71,28 @@ const toolFilenames: Record<string, string> = {
   'header-footer': 'modified.pdf',
 };
 
+function getFriendlyName(job: any): string {
+  const staticName = toolFilenames[job.tool];
+  if (staticName) return staticName;
+
+  // For dynamic tools (compress/convert), use the actual extension from the output file
+  if (job.outputFile) {
+    const ext = path.extname(job.outputFile);
+    const base = job.tool.includes('image') ? 'image' : 
+                 job.tool.includes('video') ? 'video' : 'output';
+    return `${base}${ext}`;
+  }
+
+  return 'output';
+}
+
 router.get('/status/:jobId', (req: Request, res: Response, next: NextFunction) => {
   const job = getJob(req.params.jobId);
   if (!job) {
     return next(createError('Job not found. It may have expired.', 404));
   }
 
-  const friendlyName = toolFilenames[job.tool] || path.basename(job.outputFile || 'output');
+  const friendlyName = getFriendlyName(job);
 
   res.json({
     success: true,
@@ -91,8 +124,7 @@ router.get('/download/:jobId', (req: Request, res: Response, next: NextFunction)
     return next(createError('Output file not found. It may have been cleaned up.', 404));
   }
 
-  // Use a friendly, user-readable filename with the correct extension
-  const friendlyName = toolFilenames[job.tool] || path.basename(job.outputFile);
+  const friendlyName = getFriendlyName(job);
 
   // res.download() sets Content-Disposition: attachment + correct Content-Type automatically
   res.download(path.resolve(job.outputFile), friendlyName, (err) => {

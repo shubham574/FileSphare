@@ -16,6 +16,7 @@ type ProcessStatus = 'idle' | 'uploading' | 'pending' | 'processing' | 'complete
 export default function ToolPageWrapper({ tool }: ToolPageWrapperProps) {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<ProcessStatus>('idle');
+  const [totalProgress, setTotalProgress] = useState(0);
   const [completedJob, setCompletedJob] = useState<{ jobId: string; fileName: string; meta?: any } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [options, setOptions] = useState<Record<string, string | number>>(() => {
@@ -45,14 +46,23 @@ export default function ToolPageWrapper({ tool }: ToolPageWrapperProps) {
     Object.entries(options).forEach(([key, val]) => formData.append(key, String(val)));
 
     try {
-      const job = await submitJob(tool.endpoint, formData);
+      const job = await submitJob(tool.endpoint, formData, (progress) => {
+        setTotalProgress(Math.round(progress * 0.5)); // Upload is first 50%
+      });
       setStatus('pending');
+      setTotalProgress(50); // Upload complete
 
       const result = await waitForJob(
         job.jobId,
         (s: StatusResponse) => {
-          if (s.status === 'processing') setStatus('processing');
-          else if (s.status === 'pending') setStatus('pending');
+          if (s.status === 'processing') {
+            setStatus('processing');
+            if (s.progress !== undefined) {
+              setTotalProgress(50 + Math.round(s.progress * 0.5)); // Processing is second 50%
+            }
+          } else if (s.status === 'pending') {
+            setStatus('pending');
+          }
         }
       );
 
@@ -75,6 +85,7 @@ export default function ToolPageWrapper({ tool }: ToolPageWrapperProps) {
   const handleReset = () => {
     setSelectedFiles([]);
     setStatus('idle');
+    setTotalProgress(0);
     setCompletedJob(null);
     setError(null);
   };
@@ -192,7 +203,7 @@ export default function ToolPageWrapper({ tool }: ToolPageWrapperProps) {
         {/* Process Section */}
         {status !== 'idle' && status !== 'completed' && (
           <section className="mt-12 max-w-xl mx-auto flex flex-col items-center gap-6">
-            <ProgressBar status={status} progress={65} toolName={tool.name} />
+            <ProgressBar status={status} progress={totalProgress} toolName={tool.name} />
             
             {status === 'failed' && (
                <div className="bg-error-container border border-error/30 rounded-xl p-4 animate-fade-in w-full text-center">

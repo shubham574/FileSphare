@@ -18,23 +18,52 @@ export interface StatusResponse {
   error?: string;
   fileName?: string;
   downloadUrl?: string;
+  progress?: number;
 }
 
+/**
+ * Submits a job using XMLHttpRequest to support upload progress tracking.
+ */
 export async function submitJob(
   endpoint: string,
-  formData: FormData
+  formData: FormData,
+  onUploadProgress?: (progress: number) => void
 ): Promise<JobResponse> {
-  const res = await fetch(`${API_BASE}${endpoint}`, {
-    method: 'POST',
-    body: formData,
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', `${API_BASE}${endpoint}`);
+
+    // Track upload progress
+    if (onUploadProgress) {
+      xhr.upload.onprogress = (event) => {
+        if (event.lengthComputable) {
+          const percentComplete = Math.round((event.loaded / event.total) * 100);
+          onUploadProgress(percentComplete);
+        }
+      };
+    }
+
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        try {
+          const response = JSON.parse(xhr.responseText);
+          resolve(response);
+        } catch (e) {
+          reject(new Error('Failed to parse server response.'));
+        }
+      } else {
+        try {
+          const err = JSON.parse(xhr.responseText);
+          reject(new Error(err.error || `Server error: ${xhr.status}`));
+        } catch (e) {
+          reject(new Error(`Server error: ${xhr.status}`));
+        }
+      }
+    };
+
+    xhr.onerror = () => reject(new Error('Network error occurred during upload.'));
+    xhr.send(formData);
   });
-
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({ error: 'Unknown error' }));
-    throw new Error(err.error || `Server error: ${res.status}`);
-  }
-
-  return res.json();
 }
 
 export async function pollStatus(jobId: string): Promise<StatusResponse> {
@@ -47,7 +76,6 @@ export async function pollStatus(jobId: string): Promise<StatusResponse> {
 
 /**
  * Returns the same-origin Next.js proxy URL for a given job.
- * This ensures <a download="filename.pdf"> works correctly in all browsers.
  */
 export function getProxyDownloadUrl(jobId: string): string {
   return `/api/download/${jobId}`;
@@ -57,7 +85,7 @@ export async function waitForJob(
   jobId: string,
   onProgress?: (status: StatusResponse) => void,
   intervalMs = 1500,
-  timeoutMs = 120000
+  timeoutMs = 300000 // Increased to 5 mins for video processing
 ): Promise<StatusResponse> {
   const start = Date.now();
 
@@ -65,7 +93,7 @@ export async function waitForJob(
     const interval = setInterval(async () => {
       if (Date.now() - start > timeoutMs) {
         clearInterval(interval);
-        reject(new Error('Job timed out after 2 minutes.'));
+        reject(new Error('Job timed out. Processing is taking longer than expected.'));
         return;
       }
 

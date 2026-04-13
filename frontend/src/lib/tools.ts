@@ -5,7 +5,7 @@ export interface Tool {
   description: string;
   icon: string;
   gradient: string;
-  category: 'Organize' | 'Convert' | 'Edit' | 'Security';
+  category: 'Organize' | 'Convert' | 'Edit' | 'Security' | 'Image' | 'Video';
   acceptedFiles: string;
   multiple: boolean;
   endpoint: string;
@@ -339,6 +339,103 @@ export const tools: Tool[] = [
         defaultValue: 36,
         min: 0,
         max: 200,
+      },
+    ],
+  },
+  {
+    id: 'image-compress',
+    name: 'Compress Image',
+    description: 'Reduce image file size while maintaining visual quality.',
+    icon: '🖼️',
+    gradient: 'from-orange-400 to-red-500',
+    category: 'Image',
+    acceptedFiles: 'image/*,.jpg,.jpeg,.png,.webp,.avif',
+    multiple: false,
+    endpoint: '/api/image/compress',
+    options: [
+      {
+        key: 'quality',
+        label: 'Quality (1-100)',
+        type: 'range',
+        defaultValue: 80,
+        min: 1,
+        max: 100,
+      },
+    ],
+  },
+  {
+    id: 'image-convert',
+    name: 'Image Converter',
+    description: 'Convert images to JPG, PNG, WebP, or AVIF formats.',
+    icon: '🔄',
+    gradient: 'from-blue-400 to-indigo-500',
+    category: 'Image',
+    acceptedFiles: 'image/*,.jpg,.jpeg,.png,.webp,.avif,.tiff,.gif',
+    multiple: false,
+    endpoint: '/api/image/convert',
+    options: [
+      {
+        key: 'targetFormat',
+        label: 'Target Format',
+        type: 'select',
+        defaultValue: 'webp',
+        options: [
+          { label: 'WebP', value: 'webp' },
+          { label: 'JPEG', value: 'jpeg' },
+          { label: 'PNG', value: 'png' },
+          { label: 'AVIF', value: 'avif' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'video-compress',
+    name: 'Compress Video',
+    description: 'Reduce video size with professional-grade compression settings.',
+    icon: '📹',
+    gradient: 'from-purple-400 to-pink-600',
+    category: 'Video',
+    acceptedFiles: 'video/*,.mp4,.webm,.mov,.avi,.mkv',
+    multiple: false,
+    endpoint: '/api/video/compress',
+    options: [
+      {
+        key: 'quality',
+        label: 'Quality Preset',
+        type: 'select',
+        defaultValue: 'balanced',
+        options: [
+          { label: 'Best Quality (Bigger Size)', value: 'best' },
+          { label: 'Balanced', value: 'balanced' },
+          { label: 'Small File (Lower Quality)', value: 'small' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'video-convert',
+    name: 'Video Converter',
+    description: 'Transform videos into MP4 or WebM formats.',
+    icon: '🎬',
+    gradient: 'from-teal-400 to-emerald-600',
+    category: 'Video',
+    acceptedFiles: 'video/*,.mp4,.webm,.mov,.avi,.mkv',
+    multiple: false,
+    endpoint: '/api/video/convert',
+    options: [
+      {
+        key: 'targetFormat',
+        label: 'Target Format',
+        type: 'select',
+        defaultValue: 'mp4',
+        options: [
+          { label: 'MP4 (Standard)', value: 'mp4' },
+          { label: 'WebM (Web Optimized)', value: 'webm' },
+          { label: 'MOV (Apple Display)', value: 'mov' },
+          { label: 'AVI (Legacy)', value: 'avi' },
+          { label: 'MKV (High Definition)', value: 'mkv' },
+          { label: 'GIF (Animated Image)', value: 'gif' },
+        ],
       },
     ],
   },

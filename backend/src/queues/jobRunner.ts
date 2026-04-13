@@ -15,6 +15,8 @@ import { pdfToJpg } from '../services/pdfToJpg.service';
 import { pdfToWord } from '../services/pdfToWord.service';
 import { wordToPdf } from '../services/wordToPdf.service';
 import { addHeaderFooter } from '../services/headerFooter.service';
+import { compressImage, convertImage } from '../services/image.service';
+import { compressVideo, convertVideo } from '../services/video.service';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -27,6 +29,7 @@ export interface JobState {
   inputFiles: string[];
   outputFile?: string;
   error?: string;
+  progress?: number; // 0-100
   options?: Record<string, any>;
   metadata?: Record<string, any>; // tool-specific extra data (e.g. compress stats)
   createdAt: Date;
@@ -45,18 +48,22 @@ export function getJob(jobId: string): JobState | undefined {
 // ─── Service map ──────────────────────────────────────────────────────────────
 
 // Compress returns a richer result object; all others return a string path
-const serviceMap: Record<string, (inputFiles: string[], options: any) => Promise<string | { outputPath: string; [key: string]: any }>> = {
-  'merge':        (files, _opts)  => mergePdfs(files),
-  'split':        (files, opts)   => splitPdf(files[0], opts),
-  'compress':     (files, opts)   => compressPdf(files[0], opts),
-  'rotate':       (files, opts)   => rotatePdf(files[0], opts),
-  'watermark':    (files, opts)   => addWatermark(files[0], opts),
-  'page-numbers': (files, opts)   => addPageNumbers(files[0], opts),
-  'jpg-to-pdf':   (files, _opts)  => jpgToPdf(files),
-  'pdf-to-jpg':   (files, _opts)  => pdfToJpg(files[0]),
-  'pdf-to-word':  (files, _opts)  => pdfToWord(files[0]),
-  'word-to-pdf':  (files, _opts)  => wordToPdf(files[0]),
-  'header-footer': (files, opts)   => addHeaderFooter(files[0], opts),
+const serviceMap: Record<string, (inputFiles: string[], options: any, onProgress?: (p: number) => void) => Promise<string | { outputPath: string; [key: string]: any }>> = {
+  'merge':        (files, _opts, onProgress)      => mergePdfs(files),
+  'split':        (files, opts, onProgress)       => splitPdf(files[0], opts),
+  'compress':     (files, opts, onProgress)       => compressPdf(files[0], opts),
+  'rotate':       (files, opts, onProgress)       => rotatePdf(files[0], opts),
+  'watermark':    (files, opts, onProgress)       => addWatermark(files[0], opts),
+  'page-numbers': (files, opts, onProgress)       => addPageNumbers(files[0], opts),
+  'jpg-to-pdf':   (files, _opts, onProgress)      => jpgToPdf(files),
+  'pdf-to-jpg':   (files, _opts, onProgress)      => pdfToJpg(files[0]),
+  'pdf-to-word':  (files, _opts, onProgress)      => pdfToWord(files[0]),
+  'word-to-pdf':  (files, _opts, onProgress)      => wordToPdf(files[0]),
+  'header-footer': (files, opts, onProgress)       => addHeaderFooter(files[0], opts),
+  'image-compress': (files, opts, onProgress)      => compressImage(files[0], opts, onProgress),
+  'image-convert':  (files, opts, onProgress)      => convertImage(files[0], opts.targetFormat, onProgress),
+  'video-compress': (files, opts, onProgress)      => compressVideo(files[0], opts, onProgress),
+  'video-convert':  (files, opts, onProgress)      => convertVideo(files[0], opts.targetFormat, onProgress),
 };
 
 // ─── Job dispatcher ───────────────────────────────────────────────────────────
@@ -82,7 +89,11 @@ async function runJob(jobId: string) {
   }
 
   try {
-    const result = await serviceFn(job.inputFiles, job.options || {});
+    const result = await serviceFn(
+      job.inputFiles, 
+      job.options || {},
+      (percent) => updateJob(jobId, { progress: Math.min(Math.round(percent), 100) })
+    );
 
     // Some services (compress) return a rich object; others return a plain string path
     let outputFile: string;

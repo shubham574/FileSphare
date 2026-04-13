@@ -21,12 +21,14 @@ export default function ProgressBar({ status, progress, toolName }: ProgressBarP
 
   // Determine animation progress value
   const isIndeterminate = status === 'processing' || status === 'pending';
-  const progressValue =
-    status === 'completed' ? 100 :
-    status === 'uploading' ? (progress || 60) :
-    status === 'pending' ? 30 :
-    status === 'processing' ? 65 :
-    status === 'failed' ? 100 : 0;
+  let progressValue = progress || 0;
+  
+  if (status === 'completed' || status === 'failed') {
+    progressValue = 100;
+  }
+  
+  // Ensure we show at least a sliver of progress once started
+  if (status !== 'idle' && progressValue === 0) progressValue = 2;
 
   let displayLabel = cfg.label;
   if (status === 'processing' && toolName) {

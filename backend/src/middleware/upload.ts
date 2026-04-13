@@ -27,9 +27,13 @@ const fileFilter = (
   file: any,
   cb: multer.FileFilterCallback
 ) => {
-  const allowed = ['.pdf', '.docx', '.jpg', '.jpeg', '.png', '.webp'];
+  const allowed = [
+    '.pdf', '.docx', 
+    '.jpg', '.jpeg', '.png', '.webp', '.avif', '.gif',
+    '.mp4', '.webm', '.mov', '.avi', '.mkv'
+  ];
   const ext = path.extname(file.originalname).toLowerCase();
-  if (allowed.includes(ext)) {
+  if (allowed.includes(ext) || file.mimetype.startsWith('video/') || file.mimetype.startsWith('image/')) {
     cb(null, true);
   } else {
     cb(new Error(`File type not allowed: ${ext}`));

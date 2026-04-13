@@ -15,6 +15,10 @@ const mdIcons: Record<string, string> = {
   'rotate': 'rotate_right',
   'watermark': 'branding_watermark',
   'page-numbers': 'format_list_numbered',
+  'image-compress': 'photo_size_select_small',
+  'image-convert': 'image_search',
+  'video-compress': 'video_file',
+  'video-convert': 'movie_edit',
 };
 
 const toolColors: Record<string, { bg: string; text: string; bgSoft: string }> = {
@@ -28,11 +32,15 @@ const toolColors: Record<string, { bg: string; text: string; bgSoft: string }> =
   'rotate': { bg: 'bg-cyan-600', text: 'text-cyan-600', bgSoft: 'bg-cyan-50 dark:bg-cyan-900/30' },
   'watermark': { bg: 'bg-fuchsia-600', text: 'text-fuchsia-600', bgSoft: 'bg-fuchsia-50 dark:bg-fuchsia-900/30' },
   'page-numbers': { bg: 'bg-emerald-600', text: 'text-emerald-600', bgSoft: 'bg-emerald-50 dark:bg-emerald-900/30' },
+  'image-compress': { bg: 'bg-orange-500', text: 'text-orange-500', bgSoft: 'bg-orange-500/10' },
+  'image-convert': { bg: 'bg-indigo-500', text: 'text-indigo-500', bgSoft: 'bg-indigo-500/10' },
+  'video-compress': { bg: 'bg-purple-500', text: 'text-purple-500', bgSoft: 'bg-purple-500/10' },
+  'video-convert': { bg: 'bg-teal-500', text: 'text-teal-500', bgSoft: 'bg-teal-500/10' },
 };
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('All');
-  const categories = ['All', 'Organize', 'Convert', 'Edit'];
+  const categories = ['All', 'Organize', 'Convert', 'Edit', 'Image', 'Video'];
 
   const filteredTools = tools.filter(tool => {
     if (activeTab === 'All') return true;
