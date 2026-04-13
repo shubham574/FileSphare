@@ -14,6 +14,7 @@ import { jpgToPdf } from '../services/jpgToPdf.service';
 import { pdfToJpg } from '../services/pdfToJpg.service';
 import { pdfToWord } from '../services/pdfToWord.service';
 import { wordToPdf } from '../services/wordToPdf.service';
+import { addHeaderFooter } from '../services/headerFooter.service';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -55,6 +56,7 @@ const serviceMap: Record<string, (inputFiles: string[], options: any) => Promise
   'pdf-to-jpg':   (files, _opts)  => pdfToJpg(files[0]),
   'pdf-to-word':  (files, _opts)  => pdfToWord(files[0]),
   'word-to-pdf':  (files, _opts)  => wordToPdf(files[0]),
+  'header-footer': (files, opts)   => addHeaderFooter(files[0], opts),
 };
 
 // ─── Job dispatcher ───────────────────────────────────────────────────────────

@@ -14,6 +14,7 @@ import { jpgToPdf } from '../services/jpgToPdf.service';
 import { pdfToJpg } from '../services/pdfToJpg.service';
 import { pdfToWord } from '../services/pdfToWord.service';
 import { wordToPdf } from '../services/wordToPdf.service';
+import { addHeaderFooter } from '../services/headerFooter.service';
 import { config } from '../config';
 
 const toolServiceMap: Record<string, (data: PdfJobData) => Promise<string>> = {
@@ -27,6 +28,7 @@ const toolServiceMap: Record<string, (data: PdfJobData) => Promise<string>> = {
   'pdf-to-jpg': (data) => pdfToJpg(data.inputFiles[0]),
   'pdf-to-word': (data) => pdfToWord(data.inputFiles[0]),
   'word-to-pdf': (data) => wordToPdf(data.inputFiles[0]),
+  'header-footer': (data) => addHeaderFooter(data.inputFiles[0], data.options),
 };
 
 pdfQueue.process(async (bullJob) => {

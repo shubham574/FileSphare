@@ -17,6 +17,7 @@ import {
   pdfToJpgController,
   pdfToWordController,
   wordToPdfController,
+  headerFooterController,
 } from '../controllers/pdf.controller';
 
 const router = Router();
@@ -33,6 +34,7 @@ router.post('/jpg-to-pdf',   uploadLimiter, upload.array('files', 50),  jpgToPdf
 router.post('/pdf-to-jpg',   uploadLimiter, upload.single('file'),       pdfToJpgController);
 router.post('/pdf-to-word',  uploadLimiter, upload.single('file'),       pdfToWordController);
 router.post('/word-to-pdf',  uploadLimiter, upload.single('file'),       wordToPdfController);
+router.post('/header-footer', uploadLimiter, upload.single('file'),      headerFooterController);
 
 // ─── Job Status (in-memory) ────────────────────────────────────────────────
 
@@ -48,6 +50,7 @@ const toolFilenames: Record<string, string> = {
   'pdf-to-jpg':   'pdf_pages.zip',
   'pdf-to-word':  'converted.docx',
   'word-to-pdf':  'converted.pdf',
+  'header-footer': 'modified.pdf',
 };
 
 router.get('/status/:jobId', (req: Request, res: Response, next: NextFunction) => {

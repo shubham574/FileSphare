@@ -163,3 +163,25 @@ export async function wordToPdfController(req: Request, res: Response, next: Nex
 
   dispatch('word-to-pdf', [file.path], {}, req, res);
 }
+
+// ─── Header & Footer ──────────────────────────────────────────────────────
+
+export async function headerFooterController(req: Request, res: Response, next: NextFunction) {
+  const file = req.file;
+  if (!file) return next(createError('Upload a PDF file.', 400));
+  if (!(await validatePdf(file.path))) return next(createError('Invalid PDF file.', 400));
+
+  const options = {
+    headerText: req.body.headerText || '',
+    headerPosition: req.body.headerPosition || 'top-center',
+    footerText: req.body.footerText || '',
+    footerPosition: req.body.footerPosition || 'bottom-center',
+    pages: req.body.pages || 'all',
+    fontSize: parseInt(req.body.fontSize || '12', 10),
+    color: req.body.color || '#000000',
+    opacity: parseFloat(req.body.opacity || '1.0'),
+    margin: parseInt(req.body.margin || '36', 10),
+  };
+
+  dispatch('header-footer', [file.path], options, req, res);
+}
