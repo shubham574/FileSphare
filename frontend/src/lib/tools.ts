@@ -15,7 +15,7 @@ export interface Tool {
 export interface ToolOption {
   key: string;
   label: string;
-  type: 'select' | 'text' | 'number' | 'range';
+  type: 'select' | 'text' | 'textarea' | 'number' | 'range' | 'checkbox';
   defaultValue: string | number;
   options?: { label: string; value: string }[];
   min?: number;
@@ -272,8 +272,8 @@ export const tools: Tool[] = [
     options: [
       {
         key: 'headerText',
-        label: 'Header Text',
-        type: 'text',
+        label: 'Header Text (supports multiple lines)',
+        type: 'textarea',
         defaultValue: '',
       },
       {
@@ -289,8 +289,8 @@ export const tools: Tool[] = [
       },
       {
         key: 'footerText',
-        label: 'Footer Text',
-        type: 'text',
+        label: 'Footer Text (supports multiple lines)',
+        type: 'textarea',
         defaultValue: '',
       },
       {
@@ -339,6 +339,12 @@ export const tools: Tool[] = [
         defaultValue: 36,
         min: 0,
         max: 200,
+      },
+      {
+        key: 'showLine',
+        label: 'Show Separator Line',
+        type: 'checkbox',
+        defaultValue: 'true',
       },
     ],
   },

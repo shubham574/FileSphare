@@ -178,6 +178,30 @@ export default function ToolPageWrapper({ tool }: ToolPageWrapperProps) {
                       }
                       className="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer accent-primary"
                     />
+                  ) : opt.type === 'textarea' ? (
+                    <textarea
+                      id={`opt-${opt.key}`}
+                      value={String(options[opt.key])}
+                      rows={3}
+                      placeholder="Enter text... (press Enter for new line)"
+                      onChange={(e) =>
+                        setOptions((prev) => ({ ...prev, [opt.key]: e.target.value }))
+                      }
+                      className="w-full bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-3 text-on-surface text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-outline resize-y min-h-[80px]"
+                    />
+                  ) : opt.type === 'checkbox' ? (
+                    <label htmlFor={`opt-${opt.key}`} className="flex items-center gap-3 cursor-pointer select-none">
+                      <input
+                        id={`opt-${opt.key}`}
+                        type="checkbox"
+                        checked={options[opt.key] === 'true' || options[opt.key] === true}
+                        onChange={(e) =>
+                          setOptions((prev) => ({ ...prev, [opt.key]: e.target.checked ? 'true' : 'false' }))
+                        }
+                        className="w-5 h-5 accent-primary rounded cursor-pointer"
+                      />
+                      <span className="text-on-surface-variant text-sm">Draw a thin line below the header and above the footer</span>
+                    </label>
                   ) : (
                     <input
                       id={`opt-${opt.key}`}

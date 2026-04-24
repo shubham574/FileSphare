@@ -181,6 +181,7 @@ export async function headerFooterController(req: Request, res: Response, next: 
     color: req.body.color || '#000000',
     opacity: parseFloat(req.body.opacity || '1.0'),
     margin: parseInt(req.body.margin || '36', 10),
+    showLine: req.body.showLine !== 'false',
   };
 
   dispatch('header-footer', [file.path], options, req, res);
